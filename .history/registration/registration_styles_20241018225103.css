@@ -1,0 +1,60 @@
+:root {
+    --primary-color: #071739;       /* Dark Blue */
+    --secondary-color: #4b6382;     /* Light Blue */
+    --accent-color-1: #A68868;      /* Light Gold */
+    --accent-color-2: #E3C39D;      /* Light Beige */
+    --bg-color-light: #CDD5DB;      /* Light Gray */
+    --bg-color-secondary: #A4B5C4;  /* Light Blue-Gray */
+    --text-light: #fff;            /* White text */
+    --text-dark: #071739;           /* Dark text */
+}
+
+/* call */
+
+/*
+    background-color: var(--primary-color);
+    color: var(--text-light);
+*/
+
+
+.registration-navbar, .registration-footer {
+    background-color: var(--secondary-color);
+    height: 10vh;
+    padding: 5px;
+}
+
+.registration-navbar-logo, .registration-navbar-slogan, .registration-footer {
+    color: var(--text-dark);
+}
+
+.registration-footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+
+}
+
+
+
+.submit-btn  {
+    color: var(--text-light);
+    background-color: var(--accent-color-1);
+    border-radius: 10px;
+    padding: 6px;
+    border: none;
+}
+
+.submit-btn:hover {
+    background-color: var(--accent-color-2);
+}
+
+/* unvisited link */
+a:link, .link:link {
+    color: var(--secondary-color);
+  }
+  
+
+  /* mouse over link */
+  a:hover {
+    color: var(--text-dark);
+  }

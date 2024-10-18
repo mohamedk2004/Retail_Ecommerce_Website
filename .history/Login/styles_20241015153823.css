@@ -1,0 +1,22 @@
+:root {
+    --primary-color: #071739;       /* Dark Blue */
+    --secondary-color: #4b6382;     /* Light Blue */
+    --accent-color-1: #A68868;      /* Light Gold */
+    --accent-color-2: #E3C39D;      /* Light Beige */
+    --bg-color-light: #CDD5DB;      /* Light Gray */
+    --bg-color-secondary: #A4B5C4;  /* Light Blue-Gray */
+    --text-light: white;            /* White text */
+    --text-dark: #071739;           /* Dark text */
+}
+
+/* call */
+
+/*
+    background-color: var(--primary-color);
+    color: var(--text-light);
+*/
+
+
+.registration-navbar {
+    background-color
+}
