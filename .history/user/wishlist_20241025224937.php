@@ -124,7 +124,6 @@ $wishlist_items = [
 ?>
     <!-- Navbar -->
     <?php require "./components/navbar.php"; ?>
-
     <div class="container wishlist-container">
         <h2 class="wishlist-header">My Wishlist</h2>
 
