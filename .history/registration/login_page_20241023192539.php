@@ -1,36 +1,20 @@
 <?php
 session_start();
 
+/// [Front-End Validation]
 
 // PHP Logic for login validation
-include_once "includes/dbh.inc.php";
-$emailError = $passwordError = $termsError = $email = $password = "";
+$emailError = $passwordError = $termsError = "";
+$email = $password = "";
 
 // Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        //grab data from user and see if it exists in database
-        $email=$_POST["Email"];
-        $password=$_POST["Password"];
-
-        $sql="Select * from users where Email ='$Email' and Password='$Password'";
-        $result = mysqli_query($conn,$sql);
-
-        if($row=mysqli_fetch_array($result))	{
-            $_SESSION["ID"]=$row[0];
-            $_SESSION["FName"]=$row["FirstName"];
-            $_SESSION["LName"]=$row["LastName"];
-            $_SESSION["Email"]=$row["Email"];
-            $_SESSION["Password"]=$row["Password"];
-            $_SESSION["Hobby"]=$row["Hobby"];
-            header("Location:index.php?login=success");
-        }
-        // Check if this is a forgot password submission
-        if (isset($_POST['forgot_password_submit'])) {
-            // Handle forgot password functionality
-            $forgotEmail = $_POST['forgot_email'];
-            $newPassword = $_POST['new_password'];
-            $confirmPassword = $_POST['confirm_password'];
-        }
+    // Check if this is a forgot password submission
+    if (isset($_POST['forgot_password_submit'])) {
+        // Handle forgot password functionality
+        $forgotEmail = $_POST['forgot_email'];
+        $newPassword = $_POST['new_password'];
+        $confirmPassword = $_POST['confirm_password'];
 
         // Validate email
         if (empty($forgotEmail) || !filter_var($forgotEmail, FILTER_VALIDATE_EMAIL)) {
@@ -75,13 +59,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $password = $_POST["password"];
         }
 
-        // // If no errors, assume login is successful
-        // if (empty($emailError) && empty($passwordError)) {
-        //     $_SESSION['email'] = $email;
-        //     echo "<script>alert('Login successful!');</script>";
-        //     // Redirect to dashboard or homepage
-        // }
+        // If no errors, assume login is successful
+        if (empty($emailError) && empty($passwordError)) {
+            $_SESSION['email'] = $email;
+            echo "<script>alert('Login successful!');</script>";
+            // Redirect to dashboard or homepage
+        }
     }
+}
+
+
+// CRUD Functions
+
+
+// //database connection
+// $servername = "localhost";
+// $username = "root"; // Replace with your database username
+// $password = ""; // Replace with your database password
+// $dbname = "login_system"; // Replace with your database name
+
+// $conn = new mysqli($servername, $username, $password, $dbname);
+
+// // Check connection
+// if ($conn->connect_error) {
+//     die("Connection failed: " . $conn->connect_error);
+// }
 
 
 

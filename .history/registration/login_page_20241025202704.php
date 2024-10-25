@@ -3,34 +3,39 @@ session_start();
 
 
 // PHP Logic for login validation
+$emailError = $passwordError = $termsError = "";
+$email = $password = "";
 include_once "includes/dbh.inc.php";
-$emailError = $passwordError = $termsError = $email = $password = "";
+//grab data from user and see if it exists in database
+if($_SERVER["REQUEST_METHOD"]=="POST"){
 
+   $Email=$_POST["Email"];
+   $Password=$_POST["Password"];
+ 
+     $sql="Select * from users where Email ='$Email' and Password='$Password'";
+   $result = mysqli_query($conn,$sql);
+   
+   if($row=mysqli_fetch_array($result))	{
+     $_SESSION["ID"]=$row[0];
+     $_SESSION["FName"]=$row["FirstName"];
+     $_SESSION["LName"]=$row["LastName"];
+     $_SESSION["Email"]=$row["Email"];
+     $_SESSION["Password"]=$row["Password"];
+     $_SESSION["Hobby"]=$row["Hobby"];
+     header("Location:index.php?login=success");
+   }
+   else	{
+     echo "Invalid Email or Password";
+   }
+ }
 // Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        //grab data from user and see if it exists in database
-        $email=$_POST["Email"];
-        $password=$_POST["Password"];
-
-        $sql="Select * from users where Email ='$Email' and Password='$Password'";
-        $result = mysqli_query($conn,$sql);
-
-        if($row=mysqli_fetch_array($result))	{
-            $_SESSION["ID"]=$row[0];
-            $_SESSION["FName"]=$row["FirstName"];
-            $_SESSION["LName"]=$row["LastName"];
-            $_SESSION["Email"]=$row["Email"];
-            $_SESSION["Password"]=$row["Password"];
-            $_SESSION["Hobby"]=$row["Hobby"];
-            header("Location:index.php?login=success");
-        }
-        // Check if this is a forgot password submission
-        if (isset($_POST['forgot_password_submit'])) {
-            // Handle forgot password functionality
-            $forgotEmail = $_POST['forgot_email'];
-            $newPassword = $_POST['new_password'];
-            $confirmPassword = $_POST['confirm_password'];
-        }
+    // Check if this is a forgot password submission
+    if (isset($_POST['forgot_password_submit'])) {
+        // Handle forgot password functionality
+        $forgotEmail = $_POST['forgot_email'];
+        $newPassword = $_POST['new_password'];
+        $confirmPassword = $_POST['confirm_password'];
 
         // Validate email
         if (empty($forgotEmail) || !filter_var($forgotEmail, FILTER_VALIDATE_EMAIL)) {
@@ -82,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //     // Redirect to dashboard or homepage
         // }
     }
-
+}
 
 
 

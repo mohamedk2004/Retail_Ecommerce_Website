@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Check if this is a forgot password submission
         if (isset($_POST['forgot_password_submit'])) {
             // Handle forgot password functionality
-            $forgotEmail = $_POST['forgot_email'];
+            $orgotEmail = $_POST['forgot_email'];
             $newPassword = $_POST['new_password'];
             $confirmPassword = $_POST['confirm_password'];
         }

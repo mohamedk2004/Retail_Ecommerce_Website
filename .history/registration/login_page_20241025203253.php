@@ -8,6 +8,7 @@ $emailError = $passwordError = $termsError = $email = $password = "";
 
 // Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
         //grab data from user and see if it exists in database
         $email=$_POST["Email"];
         $password=$_POST["Password"];
@@ -27,11 +28,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Check if this is a forgot password submission
         if (isset($_POST['forgot_password_submit'])) {
             // Handle forgot password functionality
-            $forgotEmail = $_POST['forgot_email'];
+            forgotEmail = $_POST['forgot_email'];
             $newPassword = $_POST['new_password'];
             $confirmPassword = $_POST['confirm_password'];
-        }
-
+    }
+        
         // Validate email
         if (empty($forgotEmail) || !filter_var($forgotEmail, FILTER_VALIDATE_EMAIL)) {
             $emailError = "Please enter a valid email address.";
@@ -82,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //     // Redirect to dashboard or homepage
         // }
     }
-
+}
 
 
 
