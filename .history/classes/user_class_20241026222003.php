@@ -1,4 +1,5 @@
 <?php
+// include "./database/db_conn.inc.php";
 include "./enums.php";
 
 $conn = mysqli_connect("localhost", "root", "", "ecommerce_simple_schema");
@@ -64,7 +65,7 @@ class User
 
     static function updatePassword($email, $newPassword)
     {
-        User::db_connection();
+        
         // Check if the email exists
         $sql = "SELECT * FROM users WHERE email = '$email'";
         $result = mysqli_query($GLOBALS['conn'], $sql);

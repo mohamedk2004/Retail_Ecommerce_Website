@@ -1,4 +1,5 @@
 <?php
+// include "./database/db_conn.inc.php";
 include "./enums.php";
 
 $conn = mysqli_connect("localhost", "root", "", "ecommerce_simple_schema");
@@ -31,16 +32,9 @@ class User
         }
     }
 
-    static function db_connection() {
-        if ($GLOBALS['$conn']->connect_error) {
-            die("Connection failed: " . $GLOBALS['$conn']->connect_error);
-        }
-
-    }
     //login functions
     static function login($email, $pass)
     {
-        User::db_connection();
         $sql = "SELECT * FROM users WHERE email = '$email' and password = '$pass'";
         $result = mysqli_query($GLOBALS['$conn'], $sql);
         if ($row = mysqli_fetch_array($result)) {
@@ -49,38 +43,14 @@ class User
         return NULL;
     }
 
-    static function signUp($first, $last, $email, $pass)
+    static function signUp($fn, $ln, $em, $pss, $rle)
     {
-        User::db_connection();
         $crAt = date('Y-m-d H:i:s');
-        $role = str_starts_with($email, 'admin') ? 'admin' : 'customer';
 
-        $sql = "INSERT into users (firstname, lastname, email, password, created_at, role) values ('$first','$last', '$email', '$pass', '$crAt', '$role')";
+        $sql = "INSERT into users (firstname, lastname, email, password, created_at, role) values ('$fn','$ln', '$em', '$pss', '$crAt', '$rle')";
         if (mysqli_query($GLOBALS['conn'], $sql))
             return true;
         else
             return false;
-    }
-
-    static function updatePassword($email, $newPassword)
-    {
-        User::db_connection();
-        // Check if the email exists
-        $sql = "SELECT * FROM users WHERE email = '$email'";
-        $result = mysqli_query($GLOBALS['conn'], $sql);
-
-        if (mysqli_num_rows($result) > 0) {
-            // If the email exists, update the password
-            $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT); // hash the new password
-            $updateSql = "UPDATE users SET password = '$hashedPassword' WHERE email = '$email'";
-
-            if (mysqli_query($GLOBALS['conn'], $updateSql)) {
-                return true; // Password update successful
-            } else {
-                return false; // Failed to update password
-            }
-        } else {
-            return false; // Email does not exist
-        }
     }
 }

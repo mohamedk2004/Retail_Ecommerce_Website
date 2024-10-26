@@ -1,4 +1,5 @@
 <?php
+// include "./database/db_conn.inc.php";
 include "./enums.php";
 
 $conn = mysqli_connect("localhost", "root", "", "ecommerce_simple_schema");
@@ -40,7 +41,7 @@ class User
     //login functions
     static function login($email, $pass)
     {
-        User::db_connection();
+        User::
         $sql = "SELECT * FROM users WHERE email = '$email' and password = '$pass'";
         $result = mysqli_query($GLOBALS['$conn'], $sql);
         if ($row = mysqli_fetch_array($result)) {
@@ -51,7 +52,6 @@ class User
 
     static function signUp($first, $last, $email, $pass)
     {
-        User::db_connection();
         $crAt = date('Y-m-d H:i:s');
         $role = str_starts_with($email, 'admin') ? 'admin' : 'customer';
 
@@ -64,7 +64,6 @@ class User
 
     static function updatePassword($email, $newPassword)
     {
-        User::db_connection();
         // Check if the email exists
         $sql = "SELECT * FROM users WHERE email = '$email'";
         $result = mysqli_query($GLOBALS['conn'], $sql);

@@ -1,19 +1,21 @@
 <?php
 session_start();
 
-// Include user class and database connection
-include './classes/user_class.php';
 
+// PHP Logic for login validation
+include_once "includes/dbh.inc.php";
 $emailError = $passwordError = $termsError = $email = $password = "";
 
 // Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Front-end login form validation
-    if (isset($_POST['forgot_password_submit'])) {
-        // Handle forgot password functionality
-        $forgotEmail = $_POST['forgot_email'];
-        $newPassword = $_POST['new_password'];
-        $confirmPassword = $_POST['confirm_password'];
+        
+        // Check if this is a forgot password submission
+        if (isset($_POST['forgot_password_submit'])) {
+            // Handle forgot password functionality
+            $forgotEmail = $_POST['forgot_email'];
+            $newPassword = $_POST['new_password'];
+            $confirmPassword = $_POST['confirm_password'];
+        }
 
         // Validate email
         if (empty($forgotEmail) || !filter_var($forgotEmail, FILTER_VALIDATE_EMAIL)) {
@@ -25,42 +27,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } elseif (strlen($newPassword) < 8) {
                 $passwordError = "Password must be at least 8 characters.";
             } else {
-                // Call update_user_password to update the password
-                if (User::updatePassword($forgotEmail, $newPassword)) {
+                // Assume function to update password
+                // update_user_password($forgotEmail, $newPassword);
+
+                // For demonstration purposes, we'll assume the password is updated
+                $passwordUpdated = true;
+
+                if ($passwordUpdated) {
                     echo "<script>alert('Password updated successfully!');</script>";
                 } else {
                     $emailError = "Failed to update password. Please try again.";
                 }
             }
         }
-    } else {
-        // Login validation
-        $email = $_POST["email"] ?? '';
-        $pass = $_POST["password"] ?? '';
-
-        if (empty($email)) {
-            $emailError = "Please enter your email.";
-        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $emailError = "Invalid email format.";
-        }
-
-        if (empty($pass)) {
-            $passwordError = "Please enter your password.";
-        } elseif (strlen($pass) < 8) {
-            $passwordError = "Password must be at least 8 characters.";
-        }
-
-        // If no errors, attempt login
-        if (empty($emailError) && empty($passwordError)) {
-            if (User::login($email, $pass)) {
-                header("Location: ../user/home_page.php");
-                exit();
-            } else {
-                $passwordError = "Invalid email or password.";
-            }
+        
+        
+        //if login from database is successful, go to home page
+        if(User::login($email, $pass)){
+            header("Location:./user/home_page.php");
         }
     }
-}
+
+
+
+
 
 ?>
 
@@ -71,16 +61,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+    <!-- Import Bootstrap -->
     <link rel="stylesheet" href="registration_styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body class="d-flex flex-column min-vh-100">
+    <!-- Top bar -->
     <div class="container-fluid registration-navbar text-center">
         <h2 class="registration-navbar-logo">LOGO</h2>
         <h6 class="registration-navbar-slogan">Choose Your Products</h6>
     </div>
 
+    <!-- Login form container -->
     <div class="container d-flex justify-content-center align-items-center flex-grow-1">
         <div class="card p-4 shadow-sm" style="max-width: 600px; width: 100%;">
             <div class="d-flex flex-column justify-content-center">
@@ -105,16 +98,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                     </div>
 
+                    <!-- Forgot Password link triggers modal -->
                     <div class="mb-4 text-end">
                         <a href="#" class="link" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Forgot
                             Password?</a>
                     </div>
 
+                    <!-- Submit button -->
                     <div class="d-grid gap-2 mt-4 ">
                         <button type="submit" class="submit-btn">Login</button>
                     </div>
                 </form>
 
+                <!-- Sign up link -->
                 <div class="text-center mt-4">
                     <p>Don't have an account? <a href="sign_up_page.php" class="link">Sign up</a></p>
                 </div>
@@ -122,6 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
 
+    <!-- Forgot Password Modal -->
     <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
@@ -147,6 +144,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <input type="password" class="form-control" id="confirm_password" name="confirm_password"
                                 placeholder="Confirm new password" required>
                         </div>
+                        <!-- Submit button for forgot password -->
                         <div class="d-grid gap-2">
                             <button type="submit" class="submit-btn" name="forgot_password_submit">Update
                                 Password</button>
@@ -156,14 +154,63 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
     </div>
-
+    <!-- Footer -->
     <footer class="registration-footer mt-auto py-3">
         <div class="container text-center">
             <span>Copyright @ 2024 CompanyName</span>
         </div>
     </footer>
 
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.querySelector("form");
+        form.addEventListener("submit", function(event) {
+            let valid = true;
+            const emailInput = document.getElementById("email");
+            const passwordInput = document.getElementById("password");
+            const emailErrorDiv = emailInput
+            .nextElementSibling; // Get the invalid-feedback div for email
+            const passwordErrorDiv = passwordInput
+            .nextElementSibling; // Get the invalid-feedback div for password
+
+            // Reset error messages
+            emailErrorDiv.textContent = "";
+            passwordErrorDiv.textContent = "";
+
+            // Validate email
+            if (emailInput.value.trim() === "") {
+                emailErrorDiv.textContent = "Please enter your email.";
+                valid = false;
+            } else if (!validateEmail(emailInput.value.trim())) {
+                emailErrorDiv.textContent = "Invalid email format.";
+                valid = false;
+            }
+
+            // Validate password
+            if (passwordInput.value.trim() === "") {
+                passwordErrorDiv.textContent = "Please enter your password.";
+                valid = false;
+            } else if (passwordInput.value.length < 8) {
+                passwordErrorDiv.textContent = "Password must be at least 8 characters.";
+                valid = false;
+            }
+
+            // Prevent form submission if invalid
+            if (!valid) {
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+
+        // Function to validate email format
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(String(email).toLowerCase());
+        }
+    });
+    </script>
+
 </body>
 
 </html>
