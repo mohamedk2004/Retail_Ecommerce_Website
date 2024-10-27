@@ -11,8 +11,7 @@
         case CreditCard = 'credit card';
     }
 
-    enum OrderStatus : string { 
-        case Pending = 'pending';
-        case Shipped = 'shipped';
-        case Delivered = 'delivered';
+    enum OrderStatus : string {
+    case Pending = 'pending';
+    case S
     }
