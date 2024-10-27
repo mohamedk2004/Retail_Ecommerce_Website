@@ -11,15 +11,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate first name
     if (empty($_POST["firstName"])) {
         $firstNameError = "Please enter your first name.";
+        echo 'no first name entered.';
     } else {
         $firstName = $_POST["firstName"];
+        echo 'first name posted successfully';
     }
 
     // Validate last name
     if (empty($_POST["lastName"])) {
         $lastNameError = "Please enter your last name.";
+        echo 'no last name entered.';
     } else {
         $lastName = $_POST["lastName"];
+        echo 'first name posted successfully';
     }
 
     // Check if email is valid
@@ -57,7 +61,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Only attempt to sign up if there are no errors
     if (empty($firstNameError) && empty($lastNameError) && empty($emailError) && empty($passwordError) && empty($confirmPasswordError) && empty($termsError)) {
         if (User::signUp($firstName, $lastName, $email, $password)) {
-            header("Location: http://localhost/Retail_Ecommerce_Website/registration/login_page.php");
+            header("Location: login_page.php");
+            exit(); // Important to exit after header redirection
         } else {
             $emailError = "Email already exists."; // Add an error if sign up fails
         }

@@ -27,6 +27,3 @@ class User
         }
     }
 }
-
-
-ENUM 

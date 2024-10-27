@@ -34,6 +34,7 @@ class User
 
     static function db_connection() {
         if ($GLOBALS['conn']->connect_error) {
+            echo 'Database connection FAILED';
             die("Connection failed: " . $GLOBALS['conn']->connect_error);
         } else {
             echo 'Database connection SUCCESSFUL';

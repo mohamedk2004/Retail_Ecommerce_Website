@@ -19,7 +19,7 @@ class User
         if ($id != "") {
             User::db_connection();
             $sql = "SELECT * from users where ID=$id";
-            $user = mysqli_query($GLOBALS['conn'], $sql);
+            $user = mysqli_query($GLOBALS['$conn'], $sql);
             if ($row = mysqli_fetch_array($user)) {
                 $this->userId = $row["user_id"];
                 $this->firstName = $row["firstname"];
@@ -33,8 +33,9 @@ class User
     }
 
     static function db_connection() {
-        if ($GLOBALS['conn']->connect_error) {
-            die("Connection failed: " . $GLOBALS['conn']->connect_error);
+        if ($GLOBALS['$conn']->connect_error) {
+            die("Connection failed: " . $GLOBALS['$conn']->connect_error);
+            echo 'Database connection FAILED';
         } else {
             echo 'Database connection SUCCESSFUL';
         }
@@ -45,12 +46,10 @@ class User
     {
         User::db_connection();
         $sql = "SELECT * FROM users WHERE email = '$email' and password = '$pass'";
-        $result = mysqli_query($GLOBALS['conn'], $sql);
+        $result = mysqli_query($GLOBALS['$conn'], $sql);
         if ($row = mysqli_fetch_array($result)) {
-            echo 'row found with given email and password';
             return new User($row[0]);
         }
-        echo 'Email & pass not located in database';
         return NULL;
     }
 
@@ -65,7 +64,7 @@ class User
             echo 'Signed up SUCCESSFULLY';
             return true;
         } else {
-            echo 'Error: ' . mysqli_error($GLOBALS['conn']);  // Add this for detailed error
+            echo 'Signed up FAILED';
             return false;
         }
     }
@@ -79,20 +78,19 @@ class User
 
         if (mysqli_num_rows($result) > 0) {
             // If the email exists, update the password
-            echo 'Email exists';
             $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT); // hash the new password
             $updateSql = "UPDATE users SET password = '$hashedPassword' WHERE email = '$email'";
 
             if (mysqli_query($GLOBALS['conn'], $updateSql)) {
                 echo 'Password update SUCCESSFUL';
-                return true;
+                return true; 
             } else {
                 ECHO 'Password update FAILED';
                 return false;
             }
         } else {
             echo 'Email does NOT EXIST';
-            return false;
+            return false; // Email does not exist
         }
     }
 }

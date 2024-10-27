@@ -34,6 +34,7 @@ class User
 
     static function db_connection() {
         if ($GLOBALS['conn']->connect_error) {
+            echo 'Database connection FAILED';
             die("Connection failed: " . $GLOBALS['conn']->connect_error);
         } else {
             echo 'Database connection SUCCESSFUL';
@@ -65,7 +66,7 @@ class User
             echo 'Signed up SUCCESSFULLY';
             return true;
         } else {
-            echo 'Error: ' . mysqli_error($GLOBALS['conn']);  // Add this for detailed error
+            echo 'Signed up FAILED';
             return false;
         }
     }

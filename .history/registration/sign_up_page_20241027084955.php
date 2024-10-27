@@ -11,31 +11,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate first name
     if (empty($_POST["firstName"])) {
         $firstNameError = "Please enter your first name.";
+        echo 'NO FIRSTNAME entered.';
     } else {
         $firstName = $_POST["firstName"];
+        echo 'FIRSTNAME posted SUCCESSFULLY';
     }
 
     // Validate last name
     if (empty($_POST["lastName"])) {
         $lastNameError = "Please enter your last name.";
+        echo 'NO LASTNAME entered.';
     } else {
         $lastName = $_POST["lastName"];
+        echo 'LASTNAME posted SUCCESSFULLY';
     }
 
     // Check if email is valid
     if (empty($_POST["email"])) {
         $emailError = "Please enter your email.";
+        echo 'NO EMAIL entered';
     } elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
         $emailError = "Invalid email format.";
+        echo 'INCORRECT EMAIL FORMAT';
     } else {
         $email = $_POST["email"];
+        echo 'EMAIL posted SUCCESSFULLY';
     }
 
     // Check if password is at least 8 characters
     if (empty($_POST["password"])) {
         $passwordError = "Please enter your password.";
+        echo 'No password entered';
     } elseif (strlen($_POST["password"]) < 8) {
         $passwordError = "Password must be at least 8 characters.";
+        echo 'first name posted successfully';
     } else {
         $password = $_POST["password"];
     }
@@ -57,7 +66,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Only attempt to sign up if there are no errors
     if (empty($firstNameError) && empty($lastNameError) && empty($emailError) && empty($passwordError) && empty($confirmPasswordError) && empty($termsError)) {
         if (User::signUp($firstName, $lastName, $email, $password)) {
-            header("Location: http://localhost/Retail_Ecommerce_Website/registration/login_page.php");
+            header("Location: login_page.php");
+            exit(); // Important to exit after header redirection
         } else {
             $emailError = "Email already exists."; // Add an error if sign up fails
         }

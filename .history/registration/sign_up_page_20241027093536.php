@@ -45,19 +45,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $confirmPasswordError = "Please confirm your password.";
     } elseif ($_POST["confirmPassword"] != $password) {
         $confirmPasswordError = "Passwords do not match.";
+        echo 'INCORRECT COMFIRMPASSWORD MATCH';
     } else {
         $confirmPassword = $_POST["confirmPassword"];
+        echo 'COMFIRMPASSWORD posted SUCCESSFULLY';
     }
 
     // Check if terms checkbox is checked
     if (!isset($_POST["terms"])) {
         $termsError = "You must agree to the terms and conditions.";
+        echo 'TERMS UNCHECKED'; 
+    } else {
+        echo 'TERMS CHECKED SUCCESSFULLY';
     }
 
     // Only attempt to sign up if there are no errors
     if (empty($firstNameError) && empty($lastNameError) && empty($emailError) && empty($passwordError) && empty($confirmPasswordError) && empty($termsError)) {
         if (User::signUp($firstName, $lastName, $email, $password)) {
-            header("Location: http://localhost/Retail_Ecommerce_Website/registration/login_page.php");
+            // header("Location: http://localhost/Retail_Ecommerce_Website/registration/login_page.php");
+            echo "All fields validated, attempting signup...";
         } else {
             $emailError = "Email already exists."; // Add an error if sign up fails
         }

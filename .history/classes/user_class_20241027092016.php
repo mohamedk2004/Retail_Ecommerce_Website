@@ -33,8 +33,9 @@ class User
     }
 
     static function db_connection() {
-        if ($GLOBALS['conn']->connect_error) {
-            die("Connection failed: " . $GLOBALS['conn']->connect_error);
+        if ($GLOBALS['$conn']->connect_error) {
+            die("Connection failed: " . $GLOBALS['$conn']->connect_error);
+            echo 'Database connection FAILED';
         } else {
             echo 'Database connection SUCCESSFUL';
         }
@@ -45,7 +46,7 @@ class User
     {
         User::db_connection();
         $sql = "SELECT * FROM users WHERE email = '$email' and password = '$pass'";
-        $result = mysqli_query($GLOBALS['conn'], $sql);
+        $result = mysqli_query($GLOBALS['$conn'], $sql);
         if ($row = mysqli_fetch_array($result)) {
             echo 'row found with given email and password';
             return new User($row[0]);
@@ -65,7 +66,7 @@ class User
             echo 'Signed up SUCCESSFULLY';
             return true;
         } else {
-            echo 'Error: ' . mysqli_error($GLOBALS['conn']);  // Add this for detailed error
+            echo 'Signed up FAILED';
             return false;
         }
     }
