@@ -1,5 +1,5 @@
 <?php
-include '../classes/user_class.php';
+include './classes/user_class.php';
 
 /// PHP Logic for validation
 $firstNameError = $lastNameError = $emailError = $passwordError = $confirmPasswordError = $termsError = "";
@@ -7,7 +7,7 @@ $firstName = $lastName = $email = $password = $confirmPassword = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    //front-end validation
+    //front-end validation 
     // Validate first name
     if (empty($_POST["firstName"])) {
         $firstNameError = "Please enter your first name.";

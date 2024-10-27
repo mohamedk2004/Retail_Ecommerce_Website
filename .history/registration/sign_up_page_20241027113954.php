@@ -1,5 +1,5 @@
 <?php
-include '../classes/user_class.php';
+include './classes/user_class.php';
 
 /// PHP Logic for validation
 $firstNameError = $lastNameError = $emailError = $passwordError = $confirmPasswordError = $termsError = "";
@@ -7,7 +7,7 @@ $firstName = $lastName = $email = $password = $confirmPassword = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    //front-end validation
+    //front-end validation 
     // Validate first name
     if (empty($_POST["firstName"])) {
         $firstNameError = "Please enter your first name.";
@@ -89,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="card p-4 shadow-sm" style="max-width: 600px; width: 100%; min-height: 650px;">
             <h2 class="text-center mb-4">Sign Up</h2>
 
-            <form action="" method="POST" novalidate>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" novalidate>
                 <div class="row">
                     <div class="mb-3 col-md-6" style="padding-right: 10px;">
                         <label for="firstName" class="form-label">First Name:</label>

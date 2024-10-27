@@ -1,5 +1,5 @@
 <?php
-include "enums.php";
+include "./enums.php";
 
 $conn = mysqli_connect("localhost", "root", "", "ecommerce_simple_schema");
 class User
@@ -69,7 +69,7 @@ class User
             return false;
         }
     }
- 
+
     static function updatePassword($email, $newPassword)
     {
         // User::db_connection();

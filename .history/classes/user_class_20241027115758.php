@@ -1,5 +1,5 @@
 <?php
-include "enums.php";
+include "./enums.php";
 
 $conn = mysqli_connect("localhost", "root", "", "ecommerce_simple_schema");
 class User
@@ -60,7 +60,7 @@ class User
         // $crAt = date('Y-m-d H:i:s');
         $role = str_starts_with($email, 'admin') ? 'admin' : 'customer';
 
-        $sql = "INSERT into users (firstname, lastname, email, password, role) values ('$first','$last', '$email', '$pass', 'customer')";
+        $sql = "INSERT into users (firstname, lastname, email, password, role) values ('$first','$last', '$email', '$pass', '')";
         if (mysqli_query($GLOBALS['conn'], $sql)) {
             echo 'Signed up SUCCESSFULLY';
             return true;
@@ -69,10 +69,10 @@ class User
             return false;
         }
     }
- 
+
     static function updatePassword($email, $newPassword)
     {
-        // User::db_connection();
+        User::db_connection();
         // Check if the email exists
         $sql = "SELECT * FROM users WHERE email = '$email'";
         $result = mysqli_query($GLOBALS['conn'], $sql);

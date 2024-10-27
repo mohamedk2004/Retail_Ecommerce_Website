@@ -1,5 +1,5 @@
 <?php
-include "enums.php";
+include "./enums.php";
 
 $conn = mysqli_connect("localhost", "root", "", "ecommerce_simple_schema");
 class User
