@@ -27,10 +27,6 @@
     color: var(--text-light);
 }
 
-.registration-navbar-log {
-    margin: 0;
-}
-
 .registration-footer {
     position: relative;
     bottom: 0;

@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body class="d-flex flex-column min-vh-100">
     <div class="container-fluid registration-navbar text-center">
-        <h2 class="registration-navbar-logo">Eleva</h2>
+        <h1 class="registration-navbar-logo">Eleva</h1>
         <h6 class="registration-navbar-slogan">Choose Your Products</h6>
     </div>
 

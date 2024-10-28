@@ -1,0 +1,39 @@
+.sidebar {
+    width: 250px;
+    min-height: 100vh;
+}
+
+.nav-item a {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.nav-item a:hover {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+.navbar {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.table img {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+}
+
+.form-switch {
+    display: inline-block;
+}
+
+.pagination {
+    margin: 0;
+}

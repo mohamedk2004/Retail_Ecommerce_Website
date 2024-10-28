@@ -69,6 +69,7 @@ class User
             return false;
         }
     }
+ 
     static function updatePassword($email, $newPassword)
     {
         // User::db_connection();

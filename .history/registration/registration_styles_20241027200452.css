@@ -24,11 +24,7 @@
 }
 
 .registration-navbar-logo, .registration-navbar-slogan, .registration-footer {
-    color: var(--text-light);
-}
-
-.registration-navbar-log {
-    margin: 0;
+    color: var(--text-dark);
 }
 
 .registration-footer {

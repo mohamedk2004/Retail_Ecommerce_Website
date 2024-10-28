@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 27, 2024 at 05:02 PM
+-- Generation Time: Oct 28, 2024 at 10:39 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categories` (
   `category_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` text DEFAULT NULL
+  `category_name` varchar(255) NOT NULL,
+  `category_description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -83,12 +83,13 @@ CREATE TABLE `payments` (
 
 CREATE TABLE `products` (
   `product_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` text DEFAULT NULL,
-  `price` decimal(10,2) NOT NULL,
-  `stock_quantity` int(11) NOT NULL,
+  `product_name` varchar(255) NOT NULL,
+  `product_description` text DEFAULT NULL,
+  `product_price` decimal(10,2) NOT NULL,
+  `stock_quantity` int(11) DEFAULT NULL,
   `category_id` int(11) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `product_image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -127,7 +128,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `email`, `password`, `created_at`, `role`) VALUES
-(1, 'angie', 'medhat', 'angiemedhat@gmail.com', 'angie12345', '2024-10-27 09:30:33', 'customer');
+(1, 'angie', 'medhat', 'angiemedhat@gmail.com', 'angie12345', '2024-10-27 09:30:33', 'customer'),
+(2, 'jana', 'khairy', 'janakhairy@gmail.com', 'jana12345', '2024-10-27 16:42:09', 'customer');
 
 -- --------------------------------------------------------
 
@@ -136,8 +138,9 @@ INSERT INTO `users` (`user_id`, `firstname`, `lastname`, `email`, `password`, `c
 --
 
 CREATE TABLE `wishlist` (
+  `wishlist_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `product_ids` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT '[]' CHECK (json_valid(`product_ids`))
+  `product_ids` longtext NOT NULL DEFAULT '[]'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -197,7 +200,8 @@ ALTER TABLE `users`
 -- Indexes for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`wishlist_id`),
+  ADD KEY `wishlist_ibfk_1` (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -243,7 +247,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
