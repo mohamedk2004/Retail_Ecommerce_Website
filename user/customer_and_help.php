@@ -7,37 +7,53 @@
     <title>Customer Support & Help Center</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-    body {
-        font-family: Arial, sans-serif;
-    }
+        body {
+            font-family: Arial, sans-serif;
+        }
 
-    .hero-section {
-        background: linear-gradient(to right, #A4B5C4, #F5F5F5);
-        padding: 50px 0;
-        text-align: center;
-        color: #fff;
-    }
+        .hero-section {
+            background: linear-gradient(to right, #A4B5C4, #F5F5F5);
+            padding: 50px 0;
+            text-align: center;
+            color: #fff;
+        }
+        .checkout-btn {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 18px; 
+    background-color: var(--primary-color); /* Use primary color for checkout button */
+    color: var(--text-light);
+}
+        
+.checkout-btn:hover {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 18px; 
+    background-color: var(--secondary-color); 
+    color: var(--text-light);
+}
 
-    .hero-section h1 {
-        font-size: 3rem;
-    }
+        .hero-section h1 {
+            font-size: 3rem;
+        }
 
-    .form-section {
-        padding: 40px 20px;
-    }
+        .form-section {
+            padding: 40px 20px;
+        }
 
-    .faq-section {
-        padding: 40px 20px;
-    }
+        .faq-section {
+            padding: 40px 20px;
+        }
 
-    .faq-category {
-        margin-bottom: 30px;
-    }
+        .faq-category {
+            margin-bottom: 30px;
+        }
 
-    .faq-category h5 {
-        margin-bottom: 15px;
-    }
+        .faq-category h5 {
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 
@@ -141,6 +157,29 @@
         <p>© 2024 Your Website Name. All rights reserved.</p>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function addToCart(productName, productPrice, productImage) {
+            $.post('components/navbar.php', { 
+                product_name: productName,
+                product_price: productPrice,
+                product_image: productImage,
+                ajax_request: 'add_to_cart'
+            }, function(response) {
+                if (response.status === 'success') {
+                    updateCartCount();
+                } else {
+                    console.error("Error adding to cart");
+                }
+            }, 'json');
+        }
+
+        function updateCartCount() {
+            $.post('components/navbar.php', { ajax_request: 'update_cart_count' }, function(count) {
+                $('#cartCount').text(count);
+            });
+        }
+    </script>
 </body>
 
 </html>
