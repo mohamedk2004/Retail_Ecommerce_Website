@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // If no errors, attempt login
         if (empty($emailError) && empty($passwordError)) {
             if (User::login($email, $pass)) {
-                header(header: "Location: http://localhost/Retail_Ecommerce_Website/user/home_page.php");
+                header(header: "Location: ../user/home_page.php");
                 exit();
             } else {
                 $passwordError = "Invalid email or password.";
