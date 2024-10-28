@@ -105,6 +105,8 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <title>My Store</title>
     <style>
        :root {
@@ -308,6 +310,38 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
     background-color: var(--primary-color);
       color: var(--text-light);
 }
+/* Custom Dropdown Styles */
+.dropdown-toggle {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+}
+
+.dropdown-toggle:hover, .dropdown-toggle:focus {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+}
+
+.dropdown-menu {
+    background-color: var(--bg-color-secondary);
+    /* border: none; */
+    border-radius: 10px;
+    margin-top: 5px;
+    border-style:solid;
+}
+
+.dropdown-item {
+    color: var(--text-dark);
+}
+
+.dropdown-item:hover {
+    background-color: var(--accent-color-1);
+    color: var(--text-light);
+}
+
+.dropdown-divider {
+    border-top: 1px solid var(--accent-color-2);
+}
     </style>
 </head>
 
@@ -316,22 +350,37 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: var(--bg-color-secondary);">
         <div class="container">
-            <a class="navbar-brand" href="#">My Store</a>
+            <a class="navbar-brand" href="#"><strong>Eleva</strong></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse" id="navbarNav">              
+                
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="home_page.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="shopping_cart.php">Products</a></li>
                     <li class="nav-item"><a class="nav-link" href="customer_and_help.php">Contact</a></li>
-                </ul>
+                </ul>  
                 <form class="d-flex me-3" action="search.php" method="GET">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
-                <div class="cart-container">
+                <?php if (!empty($_SESSION['ID'])): ?>
+                <div class="dropdown ms-3">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person"></i> <?= htmlspecialchars($_SESSION['firstName']); ?>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="viewuserprofile.php">View Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="logout.php">Sign Out</a></li>
+                    </ul>
+                </div>
+            <?php else: ?>
+                <a class="nav-link nav-item" href="/retail_ecommerce_website/registration/login_page.php" class="btn btn-outline-primary ms-3">Login</a>
+            <?php endif; ?>
+                <div class="cart-container nav-item">
                     <span class="cart-icon" onclick="openCartSidebar()">
                         <i class="bi bi-cart"></i>
                         <span class="cart-count" id="cartCount"><?= $totalItems; ?></span>
