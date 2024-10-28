@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="en">
 
@@ -21,12 +23,29 @@
         height: auto;
         margin-bottom: 15px;
     }
+
+.checkout-btn {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 18px; 
+    background-color: var(--primary-color); /* Use primary color for checkout button */
+    color: var(--text-light);
+}
+
+.checkout-btn:hover {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 18px; 
+    background-color: var(--secondary-color); 
+    color: var(--text-light);
+}
     </style>
 </head>
 
 <body>
     <!-- Navbar -->
     <?php require "./components/navbar.php"; ?>
+    
 
     <!-- Carousel below header -->
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -130,12 +149,35 @@
                 </div>
             </div>
         </div>
+        
 
         <div class="text-center p-3" style="background-color: #A4B5C4;">
             © 2024 Your Website Name
         </div>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function addToCart(productName, productPrice, productImage) {
+            $.post('components/navbar.php', { 
+                product_name: productName,
+                product_price: productPrice,
+                product_image: productImage,
+                ajax_request: 'add_to_cart'
+            }, function(response) {
+                if (response.status === 'success') {
+                    updateCartCount();
+                } else {
+                    console.error("Error adding to cart");
+                }
+            }, 'json');
+        }
 
+        function updateCartCount() {
+            $.post('components/navbar.php', { ajax_request: 'update_cart_count' }, function(count) {
+                $('#cartCount').text(count);
+            });
+        }
+    </script>
 </body>
 
 </html>
