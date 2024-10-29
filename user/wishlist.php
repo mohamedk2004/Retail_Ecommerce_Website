@@ -108,9 +108,9 @@
     <?php
     // Simulated data for wishlist items
     $wishlist_items = [
-        ["title" => "M design Bottle 800mL", "price" => 120.00, "image" => "./assets/imgs/mdesign_bottle0.8_dimensions.png", "in_stock" => true],
-        ["title" => "M design Lunch Set", "price" => 85.00, "image" => "./assets/imgs/M_DesignLunchSet.jpeg", "in_stock" => false],
-        ["title" => "M design Lunch Box", "price" => 150.00, "image" => "./assets/imgsAll_Setd.954.png", "in_stock" => true]
+        ["title" => "M design Bottle 800mL", "price" => 120.00, "image" => "../assets/imgs/mdesign_bottle0.8_dimensions.png", "in_stock" => true],
+        ["title" => "M design Lunch Set", "price" => 85.00, "image" => "../assets/imgs/M_DesignLunchSet.jpeg", "in_stock" => false],
+        ["title" => "M design Lunch Box", "price" => 150.00, "image" => "../assets/imgs/All_Setd.954.png", "in_stock" => true]
     ];
     ?>
     <!-- Navbar -->
