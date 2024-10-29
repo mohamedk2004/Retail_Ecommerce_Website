@@ -15,7 +15,6 @@
             include "./adminHeader.php";
             include "./sidebar.php";
            
-           // include_once "./config/dbconnect.php";
         ?>
 
     <div id="main-content" class="container allContent-section py-4">
@@ -23,9 +22,10 @@
             <div class="col-sm-3">
                 <div class="card">
                     <i class="fa fa-users  mb-2" style="font-size: 70px;"></i>
-                    <h4 style="color:white;">Total Users</h4>
+                    <h4 style="color:white;">Total Customers</h4>
                     <h5 style="color:white;">
-                    5</h5>
+                    1
+                </h5>
                 </div>
             </div>
             <div class="col-sm-3">
@@ -33,7 +33,7 @@
                     <i class="fa fa-th-large mb-2" style="font-size: 70px;"></i>
                     <h4 style="color:white;">Total Categories</h4>
                     <h5 style="color:white;">
-                    3
+                    4
                    </h5>
                 </div>
             </div>

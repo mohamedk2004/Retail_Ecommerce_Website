@@ -9,6 +9,8 @@
        <link rel="stylesheet" href="./style.css"></link>
   </head>
 </head>
+<script type="text/javascript" src="./ajaxWork.js"></script>    
+    <script type="text/javascript" src="./script.js"></script>
 <body >
     <?php
             include "./adminHeader.php";
@@ -16,6 +18,7 @@
            
            // include_once "./config/dbconnect.php";
         ?>
+<div id="main-content" class="container allContent-section py-4">
 <div >
   <h2>All Customers</h2>
   <table class="table ">
@@ -38,6 +41,7 @@
     </tr>
    
   </table>
+</div>
   </div>
   </body>
 </html>
