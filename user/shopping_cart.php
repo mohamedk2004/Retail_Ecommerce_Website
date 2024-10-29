@@ -350,8 +350,8 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: var(--bg-color-secondary);">
         <div class="container">
-            <a class="navbar-brand" href="#"><strong>Eleva</strong></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        <a class="navbar-brand" href="#" style="color: white;"><strong>Eleva</strong></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -396,7 +396,7 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
     <div class="row">
         <div class="col-md-4">
             <div class="card product-card">
-                <img src="product1.jpg" class="card-img-top" alt="Product 1">
+                <img src="../assets/imgs/a.webp" class="card-img-top" alt="Product 1">
                 <div class="card-body">
                     <h5 class="card-title">Product 1</h5>
                     <p class="card-text">$10.00</p>
@@ -406,7 +406,7 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
         </div>
         <div class="col-md-4">
             <div class="card product-card">
-                <img src="product2.jpg" class="card-img-top" alt="Product 2">
+                <img src="../assets/imgs/oo.webp" class="card-img-top" alt="Product 2">
                 <div class="card-body">
                     <h5 class="card-title">Product 2</h5>
                     <p class="card-text">$20.00</p>
@@ -416,7 +416,7 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
         </div>
         <div class="col-md-4">
             <div class="card product-card">
-                <img src="product3.jpg" class="card-img-top" alt="Product 3">
+                <img src="../assets/imgs/ii.webp" class="card-img-top" alt="Product 3">
                 <div class="card-body">
                     <h5 class="card-title">Product 3</h5>
                     <p class="card-text">$30.00</p>
@@ -426,7 +426,7 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
         </div>
         <div class="col-md-4">
             <div class="card product-card">
-                <img src="product4.jpg" class="card-img-top" alt="Product 4">
+                <img src="../assets/imgs/uu.webp" class="card-img-top" alt="Product 4">
                 <div class="card-body">
                     <h5 class="card-title">Product 4</h5>
                     <p class="card-text">$15.00</p>
@@ -436,7 +436,7 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
         </div>
         <div class="col-md-4">
             <div class="card product-card">
-                <img src="product5.jpg" class="card-img-top" alt="Product 5">
+                <img src="../assets/imgs/ae.webp" class="card-img-top" alt="Product 5">
                 <div class="card-body">
                     <h5 class="card-title">Product 5</h5>
                     <p class="card-text">$25.00</p>
@@ -446,7 +446,7 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
         </div>
         <div class="col-md-4">
             <div class="card product-card">
-                <img src="product6.jpg" class="card-img-top" alt="Product 6">
+                <img src="../assets/imgs/aj.webp" class="card-img-top" alt="Product 6">
                 <div class="card-body">
                     <h5 class="card-title">Product 6</h5>
                     <p class="card-text">$35.00</p>
@@ -456,7 +456,7 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
         </div>
         <div class="col-md-4">
             <div class="card product-card">
-                <img src="product7.jpg" class="card-img-top" alt="Product 7">
+                <img src="../assets/imgs/lol.webp" class="card-img-top" alt="Product 7">
                 <div class="card-body">
                     <h5 class="card-title">Product 7</h5>
                     <p class="card-text">$40.00</p>
@@ -466,7 +466,7 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
         </div>
         <div class="col-md-4">
             <div class="card product-card">
-                <img src="product8.jpg" class="card-img-top" alt="Product 8">
+                <img src="../assets/imgs/hey.webp" class="card-img-top" alt="Product 8">
                 <div class="card-body">
                     <h5 class="card-title">Product 8</h5>
                     <p class="card-text">$50.00</p>
