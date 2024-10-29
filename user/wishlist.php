@@ -20,6 +20,19 @@
             --text-dark: #071739;
         }
 
+.checkout-btn {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 18px; 
+    background-color: var(--primary-color); /* Use primary color for checkout button */
+    color: var(--text-light);
+}
+
+.checkout-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
         body {
             background-color: var(--bg-color-light);
             font-family: Arial, sans-serif;
@@ -84,15 +97,15 @@
         }
 
         .wishlist-item .btn-primary {
-            background-color: var(--primary-color);
-            color: var(--text-light);
-            border-radius: 50px;
-            width: 100%;
+            background-color: var(--primary-color)!important;
+            color: var(--text-light)!important;
+            border-radius: 50px!important;
+            width: 100%!important;
         }
 
         .wishlist-item .btn-primary:hover {
-            background-color: var(--accent-color-1);
-            color: var(--text-light);
+            background-color: var(--accent-color-1)!important;
+            color: var(--text-light)!important;
         }
 
         .wishlist-item .btn-outline-secondary {
