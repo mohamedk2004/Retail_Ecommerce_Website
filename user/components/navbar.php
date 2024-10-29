@@ -342,6 +342,11 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
 .dropdown-divider {
     border-top: 1px solid var(--accent-color-2);
 }
+.searchbtn{
+    background-color: var(--primary-color)!important;
+    color: var(--text-light)!important;
+    border: none!important;
+}
     </style>
 </head>
 
@@ -366,7 +371,7 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
                 </ul>  
                 <form class="d-flex me-3" action="search.php" method="GET">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <button class="btn btn-outline-success searchbtn" type="submit" action="home_page.php">Search</button>
                 </form>
                 <?php if (!empty($_SESSION['ID'])): ?>
                 <div class="dropdown ms-3">
