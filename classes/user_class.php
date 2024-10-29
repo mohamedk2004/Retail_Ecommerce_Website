@@ -143,4 +143,22 @@ class User
     //     }
     //     return $result ? true : false;
     // }
+     static function deleteAccount($userId) {
+        // Ensure connection to the database is established
+        global $conn;
+    
+        // Sanitize the user ID to prevent SQL injection
+        $userId = mysqli_real_escape_string($conn, $userId);
+    
+        // Create the SQL delete query
+        $sql = "DELETE FROM users WHERE user_id = '$userId'";
+    
+        // Execute the query and return the result
+        if (mysqli_query($conn, $sql)) {
+            return true;  // Deletion successful
+        } else {
+            error_log("Delete Account Error: " . mysqli_error($conn)); // Log any errors for debugging
+            return false; // Deletion failed
+        }
+    }
 }
