@@ -185,7 +185,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <div class="modal-body">
                     <p><strong>1. Introduction</strong></p>
-                    <p>Welcome to [Your Company Name]. By using our website, you agree to these Terms and Conditions,
+                    <p>Welcome to Eleva. By using our website, you agree to these Terms and Conditions,
                         and to our Privacy Policy.</p>
                     <p><strong>2. Account Registration</strong></p>
                     <p>When creating an account, you must provide accurate, complete, and current information at all

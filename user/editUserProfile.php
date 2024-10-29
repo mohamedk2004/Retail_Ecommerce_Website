@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../classes/user_class.php';
+require '../classes/user_class.php';
 // Simulated user data (replace with your database retrieval logic)
 $userData = [
     'firstName' => $_SESSION['firstName'] ?? 'John',
@@ -8,40 +8,55 @@ $userData = [
     'email' => $_SESSION['email'] ?? 'johndoe@example.com',
     'password' => $_SESSION['password'] ?? 'currentpassword' // In production, store hashed passwords!
 ];
+// $showSuccessMessage = isset($_SESSION['updateSuccess']);
+// if ($showSuccessMessage) {
+//     unset($_SESSION['updateSuccess']);  // Clear the success message after use
+// }
 
 // Check if the form is submitted
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $firstName = htmlspecialchars(trim($_POST['firstName']));
     $lastName = htmlspecialchars(trim($_POST['lastName']));
     $email = htmlspecialchars(trim($_POST['email']));
-    $currentPassword = trim($_POST['currentPassword']);
-    $newPassword = trim($_POST['newPassword']);
-    $confirmNewPassword = trim($_POST['confirmNewPassword']);
-    if($currentPassword==$_SESSION['password'] && $newPassword==$confirmNewPassword){
-        $pass=$newPassword;
-    }
+    // $currentPassword = trim($_POST['currentPassword']);
+    // $newPassword = trim($_POST['newPassword']);
+    // $confirmNewPassword = trim($_POST['confirmNewPassword']);
+
     // $sql="update users set firstname='$firstName', lastname='$lastName', email='$email', password='$pass'"
     // Update the session or database
-    $_SESSION['firstName'] = $firstName;
-    $_SESSION['lastName'] = $lastName;
-    $_SESSION['email'] = $email;
+    // $_SESSION['firstName'] = $firstName;
+    // $_SESSION['lastName'] = $lastName;
+    // $_SESSION['email'] = $email;
 
     // Validate password change
-    if (!empty($currentPassword) && !empty($newPassword) && !empty($confirmNewPassword)) {
-        if ($currentPassword === $userData['password']) {
-            if ($newPassword === $confirmNewPassword) {
-                $_SESSION['password'] = $newPassword; // Update password (hash in production!)
-                $passwordChangeSuccess = "Password successfully updated!";
-            } else {
-                $passwordError = "New passwords do not match.";
-            }
-        } else {
-            $passwordError = "Current password is incorrect.";
-        }
+    // if (!empty($currentPassword) && !empty($newPassword) && !empty($confirmNewPassword))
+    // {
+    //     if ($currentPassword === $userData['password']) {
+    //         if ($newPassword === $confirmNewPassword) {
+    //             $result=User::editProfile($_SESSION['ID'],$firstName,$lastName,$email,$newPassword);
+    //             $passwordChangeSuccess = "Password successfully updated!";
+    //         } else {
+    //             $passwordError = "New passwords do not match.";
+    //         }
+    //     } else {
+    //         $passwordError = "Current password is incorrect.";
+    //     }
+    // }
+    // else
+    $result=User::editProfile($_SESSION['ID'],$firstName,$lastName,$email);
+    if($result)
+    {
+    // header("Location: viewuserprofile.php");
+    echo "User profile updated";
+    }
+    else{
+            echo "Failed to update profile";
+                $_SESSION['firstName'] = $firstName;
+                $_SESSION['lastName'] = $lastName;
+                $_SESSION['email'] = $email;
     }
 
-    header("Location: viewuserprofile.php");
-    exit();
+    
 }
 ?>
 
@@ -109,15 +124,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <form action="edituserprofile.php" method="POST">
                 <div class="mb-3">
                     <label for="firstName" class="form-label">First Name</label>
-                    <input type="text" class="form-control" id="firstName" name="firstName" value="<?= htmlspecialchars($userData['firstName']); ?>" required>
+                    <input type="text" class="form-control" id="firstName" name="firstName" value="<?= htmlspecialchars($userData['firstName']); ?>" >
                 </div>
                 <div class="mb-3">
                     <label for="lastName" class="form-label">Last Name</label>
-                    <input type="text" class="form-control" id="lastName" name="lastName" value="<?= htmlspecialchars($userData['lastName']); ?>" required>
+                    <input type="text" class="form-control" id="lastName" name="lastName" value="<?= htmlspecialchars($userData['lastName']); ?>" >
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($userData['email']); ?>" required>
+                    <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($userData['email']); ?>" >
                 </div>
 
                 <!-- Change Password Section -->
@@ -137,15 +152,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <input type="password" class="form-control" id="confirmNewPassword" name="confirmNewPassword">
                         </div>
 
-                        <?php if (isset($passwordError)): ?>
-                            <div class="text-danger"><?= $passwordError; ?></div>
-                        <?php elseif (isset($passwordChangeSuccess)): ?>
-                            <div class="text-success"><?= $passwordChangeSuccess; ?></div>
-                        <?php endif; ?>
+                        
                     </div>
                 </div>
 
                 <button type="submit" class="btn btn-save mt-3">Save Changes</button>
+                
                 <a href="viewuserprofile.php" class="btn btn-cancel mt-3 ms-2">Cancel</a>
             </form>
         </div>
@@ -153,5 +165,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Check URL parameters for ?update=success
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('update') && urlParams.get('update') === 'success') {
+        alert('User profile updated successfully!');
+        // Remove the parameter from the URL without reloading the page
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+</script>
 </body>
 </html>
