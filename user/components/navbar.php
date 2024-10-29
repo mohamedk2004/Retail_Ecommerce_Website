@@ -374,7 +374,7 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                         <li><a class="dropdown-item" href="viewuserprofile.php">View Profile</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="logout.php">Sign Out</a></li>
+                        <li><a class="dropdown-item" href="../registration/sign_out.php">Sign Out</a></li>
                     </ul>
                 </div>
             <?php else: ?>
