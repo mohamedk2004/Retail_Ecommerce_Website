@@ -96,19 +96,20 @@ function updateCartContent() {
 $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart Example</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap Icons CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <title>My Store</title>
     <style>
-:root {
+       :root {
     --primary-color: #071739;       /* Dark Blue */
     --secondary-color: #4b6382;     /* Light Blue */
     --accent-color-1: #A68868;      /* Light Gold */
@@ -119,6 +120,13 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
     --text-dark: #071739;           /* Dark text */
 }
 
+.checkout-btn {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 18px; 
+    background-color: var(--primary-color); /* Use primary color for checkout button */
+    color: var(--text-light);
+}
 /* Override Bootstrap primary color */
 .btn-primary, .text-primary {
     background-color: var(--primary-color);
@@ -135,21 +143,9 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
     background-color: var(   --bg-color-light); /* You can change this to var(--bg-color-light) if desired */
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
     overflow-x: hidden;
+    z-index: 1000;
     transition: 0.5s;
     padding-top: 60px;
-}
-.checkout-btn {
-    width: 100%;
-    padding: 10px 0;
-    font-size: 18px; 
-    background-color: var(--primary-color); /* Use primary color for checkout button */
-    color: var(--text-light);
-}
-
-.checkout-btn:hover {
-   
-    background-color: var(--secondary-color) !important; 
-    color: var(--text-light);
 }
 
 .cart-sidebar-content {
@@ -314,12 +310,45 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
     background-color: var(--primary-color);
       color: var(--text-light);
 }
+/* Custom Dropdown Styles */
+.dropdown-toggle {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+}
 
+.dropdown-toggle:hover, .dropdown-toggle:focus {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+}
+
+.dropdown-menu {
+    background-color: var(--bg-color-secondary);
+    /* border: none; */
+    border-radius: 10px;
+    margin-top: 5px;
+    border-style:solid;
+}
+
+.dropdown-item {
+    color: var(--text-dark);
+}
+
+.dropdown-item:hover {
+    background-color: var(--accent-color-1);
+    color: var(--text-light);
+}
+
+.dropdown-divider {
+    border-top: 1px solid var(--accent-color-2);
+}
     </style>
 </head>
+
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: var(--bg-color-secondary);">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: var(--bg-color-secondary);">
         <div class="container">
             <a class="navbar-brand" href="#"><strong>Eleva</strong></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -351,7 +380,7 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
                     </ul>
                 </div>
             <?php else: ?>
-                <a class="nav-link nav-item" href="/retail_ecommerce_website/registration/login_page.php" class="btn btn-outline-primary ms-3">Login</a>
+                <a class="nav-link nav-item" href="../registration/login_page.php" class="btn btn-outline-primary ms-3">Login</a>
             <?php endif; ?>
                 <div class="cart-container nav-item">
                     <span class="cart-icon" onclick="openCartSidebar()">
@@ -362,8 +391,6 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
             </div>
         </div>
     </nav>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <div class="container mt-4">
     <h2>Products</h2>
     <div class="row">
