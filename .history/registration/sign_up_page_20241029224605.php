@@ -73,27 +73,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Sign Up Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="registration_styles.css">
-    <style>
-    /* Additional styles for the card */
-    .signup-card {
-        max-width: 600px;
-        width: 100%;
-        min-height: 700px;
-        /* Increased height */
-        padding: 2rem;
-        /* Increased padding */
-    }
-
-    .password-input {
-        display: flex;
-        align-items: center;
-    }
-
-    .password-input input {
-        flex: 1;
-        /* Allow input to take full width */
-    }
-    </style>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -102,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h6 class="registration-navbar-slogan">Choose Your Products</h6>
     </div>
     <div class="container d-flex justify-content-center align-items-center flex-grow-1">
-        <div class="card signup-card shadow-sm">
+        <div class="card p-4 shadow-sm" style="max-width: 600px; width: 100%; min-height: 650px;">
             <h2 class="text-center mb-4">Sign Up</h2>
             <form action="" method="POST" novalidate>
                 <div class="row">
@@ -131,28 +110,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password:</label>
-                    <div class="password-input">
-                        <input type="password"
-                            class="form-control <?php echo (!empty($passwordError)) ? 'is-invalid' : ''; ?>"
-                            id="password" name="password" placeholder="Enter password here" required>
-                        <button type="button" class="btn btn-outline-secondary" id="togglePassword1"
-                            style="margin-left: 10px;">
-                            Show
-                        </button>
-                    </div>
+                    <input type="password"
+                        class="form-control <?php echo (!empty($passwordError)) ? 'is-invalid' : ''; ?>" id="password"
+                        name="password" placeholder="Enter password here" required>
+                    <button type="button" class="btn btn-outline-secondary" id="togglePassword">
+                        Show
+                    </button>
                     <div class="invalid-feedback"><?php echo $passwordError; ?></div>
+
                 </div>
                 <div class="mb-3">
                     <label for="confirmPassword" class="form-label">Confirm Password:</label>
-                    <div class="password-input">
-                        <input type="password"
-                            class="form-control <?php echo (!empty($confirmPasswordError)) ? 'is-invalid' : ''; ?>"
-                            id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required>
-                        <button type="button" class="btn btn-outline-secondary" id="togglePassword2"
-                            style="margin-left: 10px;">
-                            Show
-                        </button>
-                    </div>
+                    <input type="password"
+                        class="form-control <?php echo (!empty($confirmPasswordError)) ? 'is-invalid' : ''; ?>"
+                        id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required>
+                    <button type="button" class="btn btn-outline-secondary" id="togglePassword">
+                        Show
+                    </button>
                     <div class="invalid-feedback"><?php echo $confirmPasswordError; ?></div>
                 </div>
                 <div class="mb-3 form-check">
@@ -185,7 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <div class="modal-body">
                     <p><strong>1. Introduction</strong></p>
-                    <p>Welcome to Eleva. By using our website, you agree to these Terms and Conditions,
+                    <p>Welcome to [Your Company Name]. By using our website, you agree to these Terms and Conditions,
                         and to our Privacy Policy.</p>
                     <p><strong>2. Account Registration</strong></p>
                     <p>When creating an account, you must provide accurate, complete, and current information at all
@@ -211,27 +185,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-    // Toggle password visibility for the first password input
-    document.getElementById('togglePassword1').addEventListener('click', function() {
-        const passwordInput = document.getElementById('password');
-        const isPasswordVisible = passwordInput.type === 'text';
-
-        // Toggle the password visibility
-        passwordInput.type = isPasswordVisible ? 'password' : 'text';
-        this.textContent = isPasswordVisible ? 'Show' : 'Hide';
-    });
-
-    // Toggle password visibility for the confirm password input
-    document.getElementById('togglePassword2').addEventListener('click', function() {
-        const confirmPasswordInput = document.getElementById('confirmPassword');
-        const isPasswordVisible = confirmPasswordInput.type === 'text';
-
-        // Toggle the password visibility
-        confirmPasswordInput.type = isPasswordVisible ? 'password' : 'text';
-        this.textContent = isPasswordVisible ? 'Show' : 'Hide';
-    });
-    </script>
 </body>
 
 </html>
