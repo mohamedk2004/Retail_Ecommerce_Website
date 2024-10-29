@@ -1,7 +1,7 @@
 
        
  <!-- nav -->
- <nav  class="navbar navbar-expand-lg navbar-light px-5" style="background-color: #3B3131;">
+ <nav  class="navbar navbar-expand-lg navbar-light px-5" style="background-color: #3b15e7;">
     
     <a class="navbar-brand ml-5" href="./index.php">
         <img src="../assets/imgs/logo.png" width="80" height="80" alt="Swiss Collection">
