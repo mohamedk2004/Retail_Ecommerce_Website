@@ -119,7 +119,7 @@ class User
             $_SESSION['firstName']=$first;
             $_SESSION['lastName']=$last;
             $_SESSION['email']=$email;
-            header("Location:viewuserprofile.php");
+            header("Location:viewuserprofile.php?update=success");
             echo 'Profile updated successfully';
         }
         else{

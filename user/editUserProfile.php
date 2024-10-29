@@ -29,20 +29,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // $_SESSION['email'] = $email;
 
     // Validate password change
-    // if (!empty($currentPassword) && !empty($newPassword) && !empty($confirmNewPassword))
-    // {
-    //     if ($currentPassword === $userData['password']) {
-    //         if ($newPassword === $confirmNewPassword) {
-    //             $result=User::editProfile($_SESSION['ID'],$firstName,$lastName,$email,$newPassword);
-    //             $passwordChangeSuccess = "Password successfully updated!";
-    //         } else {
-    //             $passwordError = "New passwords do not match.";
-    //         }
-    //     } else {
-    //         $passwordError = "Current password is incorrect.";
-    //     }
-    // }
-    // else
+    if (!empty($currentPassword) && !empty($newPassword) && !empty($confirmNewPassword))
+    {
+        if ($currentPassword == $userData['password']) {
+            if ($newPassword === $confirmNewPassword) {
+                $result=User::editProfile($_SESSION['ID'],$firstName,$lastName,$email,$newPassword);
+                $passwordChangeSuccess = "Password successfully updated!";
+            } else {
+                $passwordError = "New passwords do not match.";
+            }
+        } else {
+            $passwordError = "Current password is incorrect.";
+        }
+    }
+    else
     $result=User::editProfile($_SESSION['ID'],$firstName,$lastName,$email);
     if($result)
     {
