@@ -466,6 +466,7 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <?php include 'chatbot.php'; ?>
 </body>
 
 </html>

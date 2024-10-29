@@ -550,5 +550,7 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
 }
 
     </script>
+        <?php include './components/chatbot.php'; ?>
+
 </body>
 </html>
