@@ -129,30 +129,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         id="email" name="email" placeholder="example@email.com" value="<?php echo $email; ?>" required>
                     <div class="invalid-feedback"><?php echo $emailError; ?></div>
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 password-input">
                     <label for="password" class="form-label">Password:</label>
-                    <div class="password-input">
-                        <input type="password"
-                            class="form-control <?php echo (!empty($passwordError)) ? 'is-invalid' : ''; ?>"
-                            id="password" name="password" placeholder="Enter password here" required>
-                        <button type="button" class="btn btn-outline-secondary" id="togglePassword1"
-                            style="margin-left: 10px;">
-                            Show
-                        </button>
-                    </div>
+                    <input type="password"
+                        class="form-control <?php echo (!empty($passwordError)) ? 'is-invalid' : ''; ?>" id="password"
+                        name="password" placeholder="Enter password here" required>
+                    <button type="button" class="btn btn-outline-secondary" id="togglePassword1"
+                        style="margin-left: 10px;">
+                        Show
+                    </button>
                     <div class="invalid-feedback"><?php echo $passwordError; ?></div>
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 password-input">
                     <label for="confirmPassword" class="form-label">Confirm Password:</label>
-                    <div class="password-input">
-                        <input type="password"
-                            class="form-control <?php echo (!empty($confirmPasswordError)) ? 'is-invalid' : ''; ?>"
-                            id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required>
-                        <button type="button" class="btn btn-outline-secondary" id="togglePassword2"
-                            style="margin-left: 10px;">
-                            Show
-                        </button>
-                    </div>
+                    <input type="password"
+                        class="form-control <?php echo (!empty($confirmPasswordError)) ? 'is-invalid' : ''; ?>"
+                        id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required>
+                    <button type="button" class="btn btn-outline-secondary" id="togglePassword2"
+                        style="margin-left: 10px;">
+                        Show
+                    </button>
                     <div class="invalid-feedback"><?php echo $confirmPasswordError; ?></div>
                 </div>
                 <div class="mb-3 form-check">
