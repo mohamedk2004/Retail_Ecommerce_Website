@@ -47,7 +47,7 @@ class User
         $sql = "SELECT * FROM users WHERE email = '$email' and password = '$pass'";
         $result = mysqli_query($GLOBALS['conn'], $sql);
         if ($row = mysqli_fetch_array($result)) {
-            header(header: "Location: http://localhost/Retail_Ecommerce_Website/user/home_page.php");f
+            header(header: "Location: http://localhost/Retail_Ecommerce_Website/user/home_page.php");
             return new User($row[0]);
         }
         echo 'Email & pass not located in database';
