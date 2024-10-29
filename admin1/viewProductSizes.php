@@ -178,12 +178,12 @@
   
 </div>
 </div>
- <!-- JavaScript dependencies -->
+
  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
 
-    <!-- JavaScript for adding rows dynamically -->
+    
     <script>
       let editRow;  
     function addVariation() {
@@ -191,13 +191,13 @@
         const size = document.getElementById("size").value;
         const qty = document.getElementById("qty").value;
 
-        // Ensure all fields are filled
+       
         if (!product || !size || !qty) return;
 
         const tableBody = document.querySelector('table tbody');
         const rowCount = tableBody.rows.length + 1;
 
-        // Create new row and append it to the table
+       
         const newRow = `
             <tr>
                 <td class="text-center">${rowCount}</td>
@@ -213,7 +213,7 @@
         `;
         tableBody.insertAdjacentHTML('beforeend', newRow);
 
-        // Close the modal and reset the form
+        
         $('#myModal').modal('hide');
         document.getElementById("addVariationForm").reset();
     }
