@@ -57,7 +57,7 @@
 
     <!-- Chatbox (Hidden by default) -->
     <div id="chatbox" class="chatbox">
-        <p>Welcome to our chat! How can we help you?</p>
+        <p>Welcome to Eleva chatbot! How can we help you?</p>
         <!-- Add chat content here -->
     </div>
 
