@@ -19,7 +19,7 @@ if (isset($_POST['product_name']) && isset($_POST['ajax_request']) && $_POST['aj
             'name' => $_POST['product_name'],
             'price' => $_POST['product_price'],
             'image' => $_POST['product_image'],
-            'quantity' => 1 // Start with a quantity of 1
+            'quantity' => 1 // Start with a quafntity of 1
         ];
         $_SESSION['cart'][] = $item;
     }
@@ -105,8 +105,8 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <title>My Store</title>
     <style>
        :root {
@@ -127,7 +127,6 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
     background-color: var(--primary-color); /* Use primary color for checkout button */
     color: var(--text-light);
 }
-
 /* Override Bootstrap primary color */
 .btn-primary, .text-primary {
     background-color: var(--primary-color);
@@ -141,7 +140,7 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
     position: fixed;
     top: 0;
     right: 0;
-    background-color: var(--bg-color-light); /* You can change this to var(--bg-color-light) if desired */
+    background-color: var(   --bg-color-light); /* You can change this to var(--bg-color-light) if desired */
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
     overflow-x: hidden;
     z-index: 1000;
@@ -239,25 +238,132 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
 }
 
 .cart-items-list .btn-danger:hover {
-    color: red; /* Use red for the delete button hover effect */
+    color: darkred; /* Consider using a color variable if you define one for hover states */
+}
+
+.cart-items-list .btn-danger i.bi-trash {
+    vertical-align: middle;
+}
+
+.cart-items-list .list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: var(--bg-color-light); /* Using the light background color */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.cart-items-list .list-group-item:hover {
+    background-color: var(--bg-color-secondary); /* Using a secondary background color on hover */
+}
+
+.cart-items-list .list-group-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.cart-items-list .list-group-item .quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+}
+
+.cart-items-list .list-group-item .total-price {
+    min-width: 80px;
+    font-weight: bold;
+    color: var(--text-dark);
+    text-align: right;
+}
+
+.cart-items-list .list-group-item .btn-danger {
+    font-size: 18px;
+    color: var(--primary-color); /* Using accent color for delete button */
+    background: none;
+    border: none;
+    padding: 0;
+    margin-left: 20px;
+}
+
+.cart-items-list .list-group-item .btn-danger:hover {
+    color: var(--accent-color-1); /* Change hover color to accent color */
+    cursor: pointer;
+}
+
+/* Checkout Button */
+.checkout-btn {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 18px; 
+    background-color: var(--primary-color); /* Use primary color for checkout button */
+    color: var(--text-light);
+}
+.checkout-btn:hover {
+    background-color: var(--primary-color);
+      color: var(--text-light);
+}
+/* Custom Dropdown Styles */
+.dropdown-toggle {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+}
+
+.dropdown-toggle:hover, .dropdown-toggle:focus {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+}
+
+.dropdown-menu {
+    background-color: var(--bg-color-secondary);
+    /* border: none; */
+    border-radius: 10px;
+    margin-top: 5px;
+    border-style:solid;
+}
+
+.dropdown-item {
+    color: var(--text-dark);
+}
+
+.dropdown-item:hover {
+    background-color: var(--accent-color-1);
+    color: var(--text-light);
+}
+
+.dropdown-divider {
+    border-top: 1px solid var(--accent-color-2);
 }
     </style>
 </head>
 
 <body>
+
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: var(--bg-color-secondary);">
         <div class="container">
-            <a class="navbar-brand text-white" href="#"><strong>Eleva</strong></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="#" style="color: white;"><strong>Eleva</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse" id="navbarNav">              
+                
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="home_page.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="shopping_cart.php">Products</a></li>
                     <li class="nav-item"><a class="nav-link" href="customer_and_help.php">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="wishlist.php">Wishlist</a></li>
-                </ul>
+                    <li class="nav-item"><a class="nav-link" href="wishlist.php">Wishlist</a></li> <!-- Wishlist button -->
+
+                </ul>  
                 <form class="d-flex me-3" action="search.php" method="GET">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query">
                     <button class="btn btn-outline-success" type="submit">Search</button>
@@ -273,92 +379,93 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
                         <li><a class="dropdown-item" href="../registration/sign_out.php">Sign Out</a></li>
                     </ul>
                 </div>
-                <?php endif; ?>
-                <div class="cart-container">
-                    <span class="cart-icon" onclick="openCart()">
+            <?php else: ?>
+                <a class="nav-link nav-item" href="../registration/login_page.php" class="btn btn-outline-primary ms-3">Login</a>
+            <?php endif; ?>
+                <div class="cart-container nav-item">
+                    <span class="cart-icon" onclick="openCartSidebar()">
                         <i class="bi bi-cart"></i>
-                        <span class="cart-count" id="cart-count"><?= $totalItems > 0 ? $totalItems : ''; ?></span>
+                        <span class="cart-count" id="cartCount"><?= $totalItems; ?></span>
                     </span>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Your page content goes here -->
-
     <!-- Cart Sidebar -->
     <div id="cartSidebar" class="cart-sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeCart()">&times;</a>
-        <div class="cart-sidebar-content" id="cart-content">
-            <h2 class="text-center">Shopping Cart</h2>
-            <div id="cart-items">
+        <div class="cart-sidebar-content">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeCartSidebar()">&times;</a>
+            <h2>Your Cart</h2>
+            <div id="cartContent">
                 <?php updateCartContent(); ?>
             </div>
         </div>
     </div>
 
-    <script>
-        function openCart() {
-            document.getElementById("cartSidebar").style.width = "300px"; // Set the desired width of the cart sidebar
-            document.getElementById("cartSidebar").style.transition = "0.5s";
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   
+   <script>
+    function openCartSidebar() {
+        document.getElementById("cartSidebar").style.width = "400px";
+        updateCart(); // Update cart content on opening
+    }
+
+    function closeCartSidebar() {
+        document.getElementById("cartSidebar").style.width = "0";
+    }
+
+    function addToCart(productName, productPrice, productImage) {
+        $.post('', { 
+            product_name: productName,
+            product_price: productPrice,
+            product_image: productImage,
+            ajax_request: 'add_to_cart'
+        }, function(data) {
+            if (data.status === 'success') {
+                updateCartCount();
+            }
+        }, 'json'); // Ensure the response is treated as JSON
+    }
+
+    function removeFromCart(index) {
+        $.post('', { 
+            item_index: index, 
+            ajax_request: 'remove_item' 
+        }, function() {
             updateCart();
-        }
+            updateCartCount();
+        });
+    }
 
-        function closeCart() {
-            document.getElementById("cartSidebar").style.width = "0";
-        }
+    function changeQuantity(index, quantityChange) {
+        $.post('', { 
+            item_index: index, 
+            quantity_change: quantityChange, 
+            ajax_request: 'change_quantity' 
+        }, function() {
+            updateCart();
+            updateCartCount();
+        });
+    }
 
-        function removeFromCart(itemIndex) {
-            // Make an AJAX request to remove the item
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "your_php_file.php", true);
-            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("cart-items").innerHTML = this.responseText;
-                    updateCartCount();
-                }
-            };
-            xhr.send("item_index=" + itemIndex + "&ajax_request=remove_item");
-        }
+    function updateCart() {
+        $.post('', { ajax_request: 'update_cart' }, function(data) {
+            $('#cartContent').html(data);
+        });
+    }
 
-        function changeQuantity(itemIndex, quantityChange) {
-            // Make an AJAX request to change the item quantity
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "your_php_file.php", true);
-            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("cart-items").innerHTML = this.responseText;
-                    updateCartCount();
-                }
-            };
-            xhr.send("item_index=" + itemIndex + "&quantity_change=" + quantityChange + "&ajax_request=change_quantity");
-        }
+    function updateCartCount() {
+    $.post('', { ajax_request: 'update_cart_count' }, function(count) {
+        $('#cartCount').text(count);
+    });
+}
 
-        function updateCart() {
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "your_php_file.php", true);
-            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("cart-items").innerHTML = this.responseText;
-                }
-            };
-            xhr.send("ajax_request=update_cart");
-        }
 
-        function updateCartCount() {
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "your_php_file.php", true);
-            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("cart-count").innerHTML = this.responseText;
-                }
-            };
-            xhr.send("ajax_request=update_cart_count");
-        }
+
     </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
