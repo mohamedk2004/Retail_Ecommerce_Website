@@ -319,19 +319,41 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">My Store</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: var(--bg-color-secondary);">
+        <div class="container">
+            <a class="navbar-brand" href="#"><strong>Eleva</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="navbar-collapse collapse" id="navbarNav">
-                <div class="navbar-nav">
-                    <a class="nav-link" href="#">Home</a>
-                    <a class="nav-link" href="#">Products</a>
-                    <a class="nav-link" href="#">Contact</a>
+            <div class="collapse navbar-collapse" id="navbarNav">              
+                
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="home_page.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="shopping_cart.php">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="customer_and_help.php">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="wishlist.php">Wishlist</a></li> <!-- Wishlist button -->
+
+                </ul>  
+                <form class="d-flex me-3" action="search.php" method="GET">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                <?php if (!empty($_SESSION['ID'])): ?>
+                <div class="dropdown ms-3">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-person"></i> <?= htmlspecialchars($_SESSION['firstName']); ?>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                        <li><a class="dropdown-item" href="viewuserprofile.php">View Profile</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="../registration/sign_out.php">Sign Out</a></li>
+                    </ul>
                 </div>
-                <div class="cart-container">
+            <?php else: ?>
+                <a class="nav-link nav-item" href="/retail_ecommerce_website/registration/login_page.php" class="btn btn-outline-primary ms-3">Login</a>
+            <?php endif; ?>
+                <div class="cart-container nav-item">
                     <span class="cart-icon" onclick="openCartSidebar()">
                         <i class="bi bi-cart"></i>
                         <span class="cart-count" id="cartCount"><?= $totalItems; ?></span>
@@ -340,6 +362,7 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
             </div>
         </div>
     </nav>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <div class="container mt-4">
     <h2>Products</h2>
