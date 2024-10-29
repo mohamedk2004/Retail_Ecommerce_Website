@@ -380,7 +380,7 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
                     </ul>
                 </div>
             <?php else: ?>
-                <a class="nav-link nav-item" href="/retail_ecommerce_website/registration/login_page.php" class="btn btn-outline-primary ms-3">Login</a>
+                <a class="nav-link nav-item" href="../registration/login_page.php" class="btn btn-outline-primary ms-3">Login</a>
             <?php endif; ?>
                 <div class="cart-container nav-item">
                     <span class="cart-icon" onclick="openCartSidebar()">

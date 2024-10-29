@@ -169,7 +169,7 @@ $product_specifications = "
 - Dishwasher, microwave safe & freezer safe
 - 100% Food Safe
 - BPA free.";
-$product_images = ["M_DesignLunchSet.jpeg", "SET_2.1_TEALORANGE.jpg", "All_setd.954.png", "mdesign_bottle0.8_dimensions.png"];
+$product_images = ["../assets/imgs/M_DesignLunchSet.jpeg", "../assets/imgs/SET_2.1_TEALORANGE.jpg", "../assets/imgs/All_setd.954.png", "../assets/imgs/mdesign_bottle0.8_dimensions.png"];
 $reviews = [
     ["name" => "Maha Refaat", "rating" => 4, "review" => "Great product!", "date" => "2024-10-10"],
     ["name" => "Fatma Osama", "rating" => 5, "review" => "Exceeded my expectations!", "date" => "2024-10-08"],
@@ -180,6 +180,7 @@ $related_products = [
     ["title" => "Product 2", "price" => 95.00, "image" => "https://via.placeholder.com/200"]
 ];
 ?>
+    <?php require "./components/navbar.php"; ?>
 
 <div class="container product-details">
     <div class="row">

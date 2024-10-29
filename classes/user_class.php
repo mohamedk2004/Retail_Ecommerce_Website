@@ -2,6 +2,12 @@
 include "enums.php";
 
 $conn = mysqli_connect("localhost", "root", "", "ecommerce_simple_schema");
+if (!$conn){
+    die("Connection failed: ". mysqli_connect_error());
+}
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 class User
 {
     public $userId;
@@ -99,4 +105,42 @@ class User
             return false;
         }
     }
+
+    static function editProfile($id,$first,$last,$email,$password = null){
+        if($password!==null)
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $sql="update users SET firstname='$first', lastname='$last',email = '$email' ";
+        if($password!==null)
+        $sql .=",password='$hashedPassword'";
+        $sql.=" where user_id=$id";
+        // $sql="update users SET firstname='$first', lastname='$last',email = '$email' where user_id='$id'";
+        $result=mysqli_query($GLOBALS['conn'], $sql);
+        if($result){
+            $_SESSION['firstName']=$first;
+            $_SESSION['lastName']=$last;
+            $_SESSION['email']=$email;
+            header("Location:viewuserprofile.php");
+            echo 'Profile updated successfully';
+        }
+        else{
+            echo 'Failed to update profile '. mysqli_error($GLOBALS['conn']);
+        }
+        return $result ? true : false;
+    }
+    // static function editProfile($id, $first, $last, $email) {
+    //     $sql = "UPDATE users SET firstname='$first', lastname='$last', email='$email' WHERE user_id=$id";
+    //     $result = mysqli_query($GLOBALS['conn'], $sql);
+        
+    //     if ($result) {
+    //         $_SESSION['firstName'] = $first;
+    //         $_SESSION['lastName'] = $last;
+    //         $_SESSION['email'] = $email;
+    //         //  $_SESSION['updateSuccess'] = true;
+    //         header("Location: viewuserprofile.php?update=success");
+    //         exit(); // Ensure script stops after redirect
+    //     } else {
+    //         echo 'Failed to update profile: ' . mysqli_error($GLOBALS['conn']);
+    //     }
+    //     return $result ? true : false;
+    // }
 }

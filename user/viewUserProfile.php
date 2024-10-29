@@ -107,7 +107,7 @@ $orderHistory = [
             <p><strong>Email:</strong> <?= htmlspecialchars($userData['email']); ?></p>
             <p><strong>Address:</strong> <?= htmlspecialchars($userData['address']); ?></p>
             <a href="edituserprofile.php" class="btn btn-edit-profile mt-3">Edit Profile</a>
-            <a href="remove_account.php" class="btn btn-remove-account mt-3 ms-2">Remove Account</a>
+            <a href="removeAccount.php" class="btn btn-remove-account mt-3 ms-2">Remove Account</a>
         </div>
     </div>
 
