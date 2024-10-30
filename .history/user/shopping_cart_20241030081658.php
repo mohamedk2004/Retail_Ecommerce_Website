@@ -485,7 +485,7 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
                 <div class="card product-card">
                     <img src="../assets/imgs/aj.webp" class="card-img-top" alt="Product 6">
                     <div class="card-body">
-                        <h5 class="card-title">Pencil Holder</h5>
+                        <h5 class="card-title">P</h5>
                         <p class="card-text">$35.00</p>
                         <button class="btn btn-primary" onclick="addToCart('Product 6', 35.00, 'product6.jpg')">Add to
                             Cart</button>

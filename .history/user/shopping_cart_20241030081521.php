@@ -441,7 +441,7 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
                 <div class="card product-card">
                     <img src="../assets/imgs/oo.webp" class="card-img-top" alt="Product 2">
                     <div class="card-body">
-                        <h5 class="card-title">TuperWear Purple</h5>
+                        <h5 class="card-title">TuperWear</h5>
                         <p class="card-text">$20.00</p>
                         <button class="btn btn-primary" onclick="addToCart('Product 2', 20.00, 'product2.jpg')">Add to
                             Cart</button>
@@ -452,7 +452,7 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
                 <div class="card product-card">
                     <img src="../assets/imgs/ii.webp" class="card-img-top" alt="Product 3">
                     <div class="card-body">
-                        <h5 class="card-title">Water Bottle</h5>
+                        <h5 class="card-title">Product 3</h5>
                         <p class="card-text">$30.00</p>
                         <button class="btn btn-primary" onclick="addToCart('Product 3', 30.00, 'product3.jpg')">Add to
                             Cart</button>
@@ -463,7 +463,7 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
                 <div class="card product-card">
                     <img src="../assets/imgs/uu.webp" class="card-img-top" alt="Product 4">
                     <div class="card-body">
-                        <h5 class="card-title">TuperWear Set Black</h5>
+                        <h5 class="card-title">Product 4</h5>
                         <p class="card-text">$15.00</p>
                         <button class="btn btn-primary" onclick="addToCart('Product 4', 15.00, 'product4.jpg')">Add to
                             Cart</button>
@@ -474,7 +474,7 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
                 <div class="card product-card">
                     <img src="../assets/imgs/ae.webp" class="card-img-top" alt="Product 5">
                     <div class="card-body">
-                        <h5 class="card-title">TuperWear Blue</h5>
+                        <h5 class="card-title">Product 5</h5>
                         <p class="card-text">$25.00</p>
                         <button class="btn btn-primary" onclick="addToCart('Product 5', 25.00, 'product5.jpg')">Add to
                             Cart</button>
@@ -485,7 +485,7 @@ $totalItems = array_sum(array_column($_SESSION['cart'], 'quantity'));
                 <div class="card product-card">
                     <img src="../assets/imgs/aj.webp" class="card-img-top" alt="Product 6">
                     <div class="card-body">
-                        <h5 class="card-title">Pencil Holder</h5>
+                        <h5 class="card-title"></h5>
                         <p class="card-text">$35.00</p>
                         <button class="btn btn-primary" onclick="addToCart('Product 6', 35.00, 'product6.jpg')">Add to
                             Cart</button>
