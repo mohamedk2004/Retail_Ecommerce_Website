@@ -98,12 +98,12 @@
     // Sample products data for each order, with added product names
     const orders = {
       1: [
-        { no: 1, name: 'Product A', image: 'img1.jpg', size: 'M', quantity: 2, unitPrice: 25.00 },
-        { no: 2, name: 'Product B', image: 'img2.jpg', size: 'L', quantity: 1, unitPrice: 35.00 }
+        { no: 1, name: 'short dress', image: '../assets/imgs/check-strappy-dress.jpg', size: 'M', quantity: 2, unitPrice: 25.00 },
+        { no: 2, name: 'shirtdress', image: '../assets/imgs/shirtdress.jpg', size: 'L', quantity: 1, unitPrice: 35.00 }
       ],
       2: [
-        { no: 1, name: 'Product C', image: 'img3.jpg', size: 'S', quantity: 3, unitPrice: 15.00 },
-        { no: 2, name: 'Product D', image: 'img4.jpg', size: 'M', quantity: 2, unitPrice: 20.00 }
+        { no: 1, name: 'crop top', image: '../assets/imgs/tops.jpg', size: 'S', quantity: 3, unitPrice: 15.00 },
+        { no: 2, name: 'shirtdress', image: '../assets/imgs/shirtdress.jpg', size: 'M', quantity: 2, unitPrice: 20.00 }
       ]
     };
 
