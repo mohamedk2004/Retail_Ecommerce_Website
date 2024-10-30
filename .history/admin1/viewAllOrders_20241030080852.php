@@ -50,10 +50,10 @@
                         <td>Angie</td>
                         <td>015498889</td>
                         <td>2024-07-10</td>
-                        <td>Fawry</td>
+                        <td>Visa</td>
                         <td><button class="btn btn-danger" onclick="toggleStatus(this)">Pending</button></td>
                         <td><button class="btn btn-danger" onclick="togglePayStatus(this)">Unpaid</button></td>
-                        <td>450 LE</td>
+                        <td>$95.00</td>
                         <td><button class="btn btn-primary openPopup" onclick="showOrderDetails(2)">View</button></td>
                     </tr>
                 </tbody>

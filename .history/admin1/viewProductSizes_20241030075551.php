@@ -40,7 +40,7 @@
 
                 <tr>
                     <td>1</td>
-                    <td>Lunch Box</td>
+                    <td>Off Shoulder Crop Top</td>
                     <td>L</td>
                     <td>7</td>
                     <td><button class="btn btn-primary" style="height:40px" onclick="editVariation(this)">Edit</button>

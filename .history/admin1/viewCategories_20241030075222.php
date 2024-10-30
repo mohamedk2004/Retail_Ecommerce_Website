@@ -48,7 +48,7 @@
 
                 <tr>
                     <td>2</td>
-                    <td>Plastic Items</td>
+                    <td>Medium Plastic Mixing Bowl</td>
 
                     <td><button class="btn btn-danger" style="height:40px">Delete</button></td>
                 </tr>
@@ -62,7 +62,7 @@
 
                 <tr>
                     <td>4</td>
-                    <td>TuperWear</td>
+                    <td>pants</td>
 
                     <td><button class="btn btn-danger" style="height:40px">Delete</button></td>
                 </tr>

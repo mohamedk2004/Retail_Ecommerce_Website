@@ -30,7 +30,7 @@
             <table class="table ">
                 <thead>
                     <tr>
-                        <th class="text-center">ID</th>
+                        <th class="text-center">S.N.</th>
                         <th class="text-center">Product Name</th>
                         <th class="text-center">Size</th>
                         <th class="text-center">Stock Quantity</th>
@@ -40,7 +40,7 @@
 
                 <tr>
                     <td>1</td>
-                    <td>Lunch Box</td>
+                    <td>Off Shoulder Crop Top</td>
                     <td>L</td>
                     <td>7</td>
                     <td><button class="btn btn-primary" style="height:40px" onclick="editVariation(this)">Edit</button>

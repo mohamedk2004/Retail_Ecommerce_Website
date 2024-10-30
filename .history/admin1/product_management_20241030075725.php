@@ -19,7 +19,7 @@
         <div class="content flex-grow-1">
             <!-- Top Navigation -->
             <nav class="navbar navbar-light bg-white shadow-sm px-4">
-                <h5 class="navbar-brand">Product List</h5>
+                <h5 class="navbar-brand">Products</h5>
                 <div>
                     <img src="https://via.placeholder.com/40" alt="Admin" class="rounded-circle ms-2">
                 </div>

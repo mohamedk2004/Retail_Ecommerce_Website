@@ -53,7 +53,7 @@
                         <td>Fawry</td>
                         <td><button class="btn btn-danger" onclick="toggleStatus(this)">Pending</button></td>
                         <td><button class="btn btn-danger" onclick="togglePayStatus(this)">Unpaid</button></td>
-                        <td>450 LE</td>
+                        <td>$95.00</td>
                         <td><button class="btn btn-primary openPopup" onclick="showOrderDetails(2)">View</button></td>
                     </tr>
                 </tbody>

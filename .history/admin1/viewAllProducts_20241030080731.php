@@ -52,8 +52,8 @@ include "./sidebar.php";
                     <td>3</td>
                     <td><img height='100px' src='../assets/imgs/a.webp'></td>
                     <td>Plastic PLate</td>
-                    <td>Reusable, dishwasher-safe plastic plate. Great for everyday use, picnics, and parties; stackable
-                        for easy storage. </td>
+                    <td>Durable, lightweight water bottle with a spill-proof cap. Made from BPA-free materials, perfect
+                        for gym, school, or office. </td>
                     <td>Plastic Items</td>
                     <td>350 LE</td>
                     <td><button class="btn btn-primary" style="height:40px" onclick="openEditModal(this)">Edit</button>
@@ -66,8 +66,8 @@ include "./sidebar.php";
                     <td>4</td>
                     <td><img height='100px' src='../assets/imgs/ae.webp'></td>
                     <td>TuperWear</td>
-                    <td>Airtight, leak-proof Tupperware container to keep food fresh longer. Ideal for meal prep,
-                        leftovers, and snacks</td>
+                    <td>Reusable, dishwasher-safe plastic plate. Great for everyday use, picnics, and parties; stackable
+                        for easy storage.</td>
                     <td>TUperWear</td>
                     <td>700 LE</td>
                     <td><button class="btn btn-primary" style="height:40px" onclick="openEditModal(this)">Edit</button>

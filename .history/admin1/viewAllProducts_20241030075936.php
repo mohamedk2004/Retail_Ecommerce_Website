@@ -22,12 +22,12 @@ include "./sidebar.php";
 
                 <tr>
                     <td>1</td>
-                    <td><img height='100px' src='../assets/imgs/All_Setd.954.png'></td>
+                    <td><img height='100px' src='../assets/imgs/j.jpg'></td>
                     <td>Lunch Box</td>
-                    <td>Leak-proof, BPA-free lunch box with multiple compartments for organized storage. Ideal for meal
-                        prepping and on-the-go lunches.</td>
-                    <td>Lunch Box</td>
-                    <td>600 LE</td>
+                    <td>V neckline and Drawstring style make you more sexy Match well with your skinny leggings, pants
+                        or jeans for a fashion look Suitable for casual, home.</td>
+                    <td>Lunch Boxes</td>
+                    <td>600</td>
                     <td><button class="btn btn-primary" style="height:40px" onclick="openEditModal(this)">Edit</button>
                     </td>
                     <td><button class="btn btn-danger" style="height:40px" onclick="deleteProduct(this)">Delete</button>
@@ -36,12 +36,12 @@ include "./sidebar.php";
 
                 <tr>
                     <td>2</td>
-                    <td><img height='100px' src='../assets/imgs/ii.webp'></td>
+                    <td><img height='100px' src='../assets/imgs/croptop.jpg'></td>
                     <td>Water Bottle</td>
-                    <td>Durable, lightweight water bottle with a spill-proof cap. Made from BPA-free materials, perfect
-                        for gym, school, or office.</td>
-                    <td>Water Bottle</td>
-                    <td>450 LE</td>
+                    <td>Crop Tops for Women Basic Off Shoulder Sexy Print V Neck Slim Shirt Vest with Button at Swiss
+                        Collecttion.</td>
+                    <td>Tops</td>
+                    <td>890</td>
                     <td><button class="btn btn-primary" style="height:40px" onclick="openEditModal(this)">Edit</button>
                     </td>
                     <td><button class="btn btn-danger" style="height:40px" onclick="deleteProduct(this)">Delete</button>
@@ -50,12 +50,11 @@ include "./sidebar.php";
 
                 <tr>
                     <td>3</td>
-                    <td><img height='100px' src='../assets/imgs/a.webp'></td>
-                    <td>Plastic PLate</td>
-                    <td>Reusable, dishwasher-safe plastic plate. Great for everyday use, picnics, and parties; stackable
-                        for easy storage. </td>
-                    <td>Plastic Items</td>
-                    <td>350 LE</td>
+                    <td><img height='100px' src='../assets/imgs/tops.jpg'></td>
+                    <td>Off Shoulder Tops </td>
+                    <td>Tops for Women Basic Off Shoulder V Neck Slim Shirt Vest with Button at Swiss Collecttion. </td>
+                    <td>Tops</td>
+                    <td>950</td>
                     <td><button class="btn btn-primary" style="height:40px" onclick="openEditModal(this)">Edit</button>
                     </td>
                     <td><button class="btn btn-danger" style="height:40px" onclick="deleteProduct(this)">Delete</button>
@@ -64,12 +63,11 @@ include "./sidebar.php";
 
                 <tr>
                     <td>4</td>
-                    <td><img height='100px' src='../assets/imgs/ae.webp'></td>
-                    <td>TuperWear</td>
-                    <td>Airtight, leak-proof Tupperware container to keep food fresh longer. Ideal for meal prep,
-                        leftovers, and snacks</td>
-                    <td>TUperWear</td>
-                    <td>700 LE</td>
+                    <td><img height='100px' src='../assets/imgs/check-strappy-dress.jpg'></td>
+                    <td>short dress</td>
+                    <td>Cute dress for Women Basic Print Slim dress with Button at Swiss Collecttion.</td>
+                    <td>Tops</td>
+                    <td>700</td>
                     <td><button class="btn btn-primary" style="height:40px" onclick="openEditModal(this)">Edit</button>
                     </td>
                     <td><button class="btn btn-danger" style="height:40px" onclick="deleteProduct(this)">Delete</button>
@@ -78,14 +76,11 @@ include "./sidebar.php";
 
                 <tr>
                     <td>5</td>
-                    <td><img height='100px'
-                            src='../assets/imgs/square-m-design_20230036_small_ebab9613-e3f8-4318-8a29-395b5774c289.webp'>
-                    </td>
-                    <td>Cutting Boards</td>
-                    <td>Durable, non-slip cutting boards, easy to clean and perfect for chopping fruits, vegetables, and
-                        meats. </td>
-                    <td>Plastic Items</td>
-                    <td>800 LE</td>
+                    <td><img height='100px' src='../assets/imgs/shirtdress.jpg'></td>
+                    <td>Shirtdress</td>
+                    <td>Shirt Dresses for Women Basic dresses with Button at Swiss Collecttion. </td>
+                    <td>Dresses</td>
+                    <td>1850</td>
                     <td><button class="btn btn-primary" style="height:40px" onclick="openEditModal(this)">Edit</button>
                     </td>
                     <td><button class="btn btn-danger" style="height:40px" onclick="deleteProduct(this)">Delete</button>
