@@ -17,7 +17,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
      
  <!-- nav -->
- <nav  class="navbar navbar-expand navbar-light px-5" style="background-color: #3b15e7;">
+ <nav  class="navbar navbar-expand navbar-light px-5" style="background-color: #071739;">
     
     <a class="navbar-brand ml-5" href="./index.php">
         <img src="../assets/imgs/logo.png" width="80" height="80" alt="Swiss Collection">
