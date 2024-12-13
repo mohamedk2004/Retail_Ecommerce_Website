@@ -10,20 +10,27 @@ class OrdersModel extends Model {
     }
 
     function fillArray() {
-        $this->orders = array(); // Initialize the orders array
-        $this->db = $this->connect(); // Database connection
-        $result = $this->readOrders(); // Get orders from the database
+        $this->orders = array();
+        $this->db = $this->connect();
+        $result = $this->readOrders();
+    
         while ($row = $result->fetch_assoc()) {
-            // Assuming order class has a constructor matching the table columns
-            array_push($this->orders, new Orders(
+            $order = new Orders(
                 $row["order_id"],
                 $row["user_id"],
                 $row["order_date"],
                 $row["total_amount"],
-                $row["order_status"],
-            ));
+                $row["order_status"]
+            );
+    
+            // Load and assign order items to the order
+            $orderItems = $order->getOrderItems();
+            $order->orderItems = $orderItems; // Add a property to hold order items
+    
+            $this->orders[] = $order;
         }
     }
+    
 
     function getOrders() {
         return $this->orders; // Return the orders array
@@ -51,4 +58,24 @@ class OrdersModel extends Model {
             echo "ERROR: Could not execute $sql. " . $this->db->error;
         }
     }
+
+     function getOrderItems() {
+        $sql = "SELECT * FROM order_items WHERE order_id = " . $this->order_id;
+        $result = $this->db->query($sql);
+    
+        $orderItems = [];
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $orderItems[] = new OrderItem(
+                    $row["order_id"],
+                    $row["order_item_id"],
+                    $row["product_id"],
+                    $row["quantity"],
+                    $row["price"]
+                );
+            }
+        }
+        return $orderItems;
+    }
+    
 }

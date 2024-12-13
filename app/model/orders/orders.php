@@ -12,6 +12,7 @@ class Orders extends Model
   private $order_date;
   private $total_amount;
   private OrderStatus $order_status;
+  private $orderItems = [];
 
   function __construct($order_id, $user_id, $order_date = "", $total_amount = "", $order_status = "pending")
   {
@@ -52,6 +53,10 @@ public function getTotalAmount(){
 public function setTotalAmount($total_amount){
     $this->total_amount = $total_amount;
 }
+
+public function getOrderItemsList() {
+    return $this->orderItems;
+}   
 
 function readOrder($order_id)
 {

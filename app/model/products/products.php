@@ -123,10 +123,10 @@ function readProduct($id)
     }
 }
 
-function editProduct($product_name, $product_description, $product_price, $stock_quantity)
+function editProduct($product_name, $product_description, $product_price, $stock_quantity, $product_image)
 {
     // Prepare the SQL query to update product details
-    $sql = "UPDATE products SET product_name='$productName', product_description='$product_description', product_price='$product_price', stock_quantity='$stock_quantity' WHERE product_id=$this->product_id;";
+    $sql = "UPDATE products SET product_name='$productName', product_description='$product_description', product_price='$product_price', stock_quantity='$stock_quantity', product_image='$product_image' WHERE product_id=$this->product_id;";
 
     // Execute the query and check if it's successful
     if ($this->db->query($sql) === true) {
