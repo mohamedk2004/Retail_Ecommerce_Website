@@ -1,5 +1,6 @@
 <?php
   require_once(__ROOT__ . "model/model.php");
+  require_once(__ROOT__ . "model/order_items_model.php"); // Include the OrderItems model
   include "enums.php";
 
 ?>
@@ -12,7 +13,6 @@ class Orders extends Model
   private $order_date;
   private $total_amount;
   private OrderStatus $order_status;
-  private $orderItems = [];
 
   function __construct($order_id, $user_id, $order_date = "", $total_amount = "", $order_status = "pending")
   {
@@ -101,16 +101,17 @@ function editOrder($order_status)
     }
 }
 
-function deleteOrder()
-{
-    // Prepare the SQL query to delete the order
-    $sql = "DELETE FROM orders WHERE order_id=$this->order_id;";
+// function deleteOrder()
+// {
+//     // Prepare the SQL query to delete the order
+//     $sql = "DELETE FROM orders WHERE order_id=$this->order_id;";
 
-    // Execute the query and check if it's successful
-    if ($this->db->query($sql) === true) {
-        echo "Order deleted successfully.";
-    } else {
-        echo "ERROR: Could not execute $sql. " . $this->db->error;
-    }
-}
+//     // Execute the query and check if it's successful
+//     if ($this->db->query($sql) === true) {
+//         echo "Order deleted successfully.";
+//     } else {
+//         echo "ERROR: Could not execute $sql. " . $this->db->error;
+//     }
+// }
+
 }

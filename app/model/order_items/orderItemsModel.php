@@ -52,21 +52,5 @@ class OrderItemsModel extends Model {
         }
     }
 
-     function getOrderDetails() {
-        $sql = "SELECT * FROM orders WHERE order_id = " . $this->order_id;
-        $result = $this->db->query($sql);
-    
-        if ($result->num_rows == 1) {
-            $row = $result->fetch_assoc();
-            return new Orders(
-                $row["order_id"],
-                $row["user_id"],
-                $row["order_date"],
-                $row["total_amount"],
-                $row["order_status"]
-            );
-        }
-        return null;
-    }
-    
+
 }

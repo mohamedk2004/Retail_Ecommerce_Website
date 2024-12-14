@@ -58,24 +58,10 @@ class OrdersModel extends Model {
             echo "ERROR: Could not execute $sql. " . $this->db->error;
         }
     }
-
-     function getOrderItems() {
-        $sql = "SELECT * FROM order_items WHERE order_id = " . $this->order_id;
-        $result = $this->db->query($sql);
     
-        $orderItems = [];
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $orderItems[] = new OrderItem(
-                    $row["order_id"],
-                    $row["order_item_id"],
-                    $row["product_id"],
-                    $row["quantity"],
-                    $row["price"]
-                );
-            }
-        }
-        return $orderItems;
+    function getOrderItems()
+    {
+        $orderItemsModel = new OrderItemsModel();
+        return $orderItemsModel->getOrderItems();
     }
-    
 }

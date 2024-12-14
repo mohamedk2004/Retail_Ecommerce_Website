@@ -36,4 +36,11 @@ class WishlistsModel extends Model {
             return false; // Return false if no wishlists are found
         }
     }
+
+
+    function getWishlistItems()
+    {
+        $wishlistItemsModel = new WishlistItemsModel();
+        return $wishlistItemsModel->getWishlistItems();
+    }
 }

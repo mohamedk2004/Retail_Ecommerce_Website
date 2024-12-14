@@ -53,7 +53,7 @@ function readWishlistItems($id)
     }
 }
 
-function deleteWishlistitem()
+function deleteWishlistItem()
 {
     // Prepare the SQL query to delete the wishlist_item
     $sql = "DELETE FROM wishlist_items WHERE wishlist_item_id=$this->wishlist_item_id;";
