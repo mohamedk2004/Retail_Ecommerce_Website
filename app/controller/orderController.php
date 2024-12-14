@@ -27,7 +27,13 @@ class OrderController extends Controller{
 
     //get all order items
     public function getAllOrderItems() {
-        return $this->model->getOrderItems(); 
+		if (isset($_REQUEST['order_id'])) {
+            $order_id = $_REQUEST['order_id'];
+            return $this->model->getOrderItems($order_id); // Pass the order_id to get filtered order items
+        } else {
+            // If order_id is not provided, return an error or all items as a fallback
+            return "Error: order_id is required.";
+        }
     }
 }
 ?>

@@ -59,9 +59,9 @@ class OrdersModel extends Model {
         }
     }
     
-    function getOrderItems()
+    function getOrderItems($order_id)
     {
         $orderItemsModel = new OrderItemsModel();
-        return $orderItemsModel->getOrderItems();
+        return $orderItemsModel->getOrderItemsByOrderId($order_id);
     }
 }

@@ -25,8 +25,12 @@ class OrderItemsModel extends Model {
         }
     }
 
-    function getOrderItems() {
-        return $this->orderItems; // Return the orderItems array
+    function getOrderItemsByOrderId($order_id) {
+        return $this->orderItems; 
+        $allOrderItems = array_filter($this->orderItems, function($item) use ($order_id) {
+            return $item->order_id == $order_id; // Filter orderItems by order_id
+        });
+        return $allOrderItems;
     }
 
     function readOrderItems() {
