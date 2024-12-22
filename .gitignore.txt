@@ -1,0 +1,5 @@
+# Composer vendor directory
+vendor/
+
+#Enviroment file
+.env
