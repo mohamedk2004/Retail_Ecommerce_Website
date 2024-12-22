@@ -23,7 +23,7 @@ class User extends Model
   {
     $this->user_id = $id;
     $this->db = $this->connect();
-
+  
     if ("" === $firstname) {
       $this->readUser($id);
     } else {
@@ -153,7 +153,7 @@ class User extends Model
       echo "updated successfully.";
       $this->readUser($this->user_id);
     } else {
-      echo "ERROR: Could not able to execute $sql. " . $conn->error;
+      echo "ERROR: Could not able to execute $sql. " .  $this->connect()->error;
     }
   }
 
@@ -163,7 +163,7 @@ class User extends Model
     if ($this->db->query($sql) === true) {
       echo "deletet successfully.";
     } else {
-      echo "ERROR: Could not able to execute $sql. " . $conn->error;
+      echo "ERROR: Could not able to execute $sql. " .  $this->connect()->error;
     }
   }
 }

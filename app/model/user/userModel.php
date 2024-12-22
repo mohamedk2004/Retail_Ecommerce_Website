@@ -57,7 +57,19 @@ class UserModel extends Model
             echo "Records inserted successfully.";
             $this->fillArray();
         } else {
-            echo "ERROR: Could not able to execute $sql. " . $conn->error;
+            echo "ERROR: Could not able to execute $sql. " .  $this->connect()->error;;
         }
     }
+    // UserModel.php
+public function checkUserByEmail($email)
+{
+    $sql = "SELECT * FROM user WHERE email = '$email'";
+    $result = $this->db->query($sql);
+
+    if ($result->num_rows > 0) {
+        return true; // User exists
+    }
+    return false; // User does not exist
+}
+
 }
