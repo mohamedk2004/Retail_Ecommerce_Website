@@ -1,6 +1,7 @@
 <?php
 // Contact.php
-require_once(__ROOT__ . "model/model.php");
+//require_once(__ROOT__ . "model/model.php");
+require_once(__ROOT__ . "/app/model/model.php");
 
 class Contact extends Model
 {
@@ -68,7 +69,7 @@ class Contact extends Model
 
     function readContact($id)
     {
-        $sql = "SELECT * FROM contact WHERE contact_id=" . $id;
+        $sql = "SELECT * FROM contact_messages  WHERE contact_id=" . $id;
         $db = $this->connect();
         $result = $db->query($sql);
         if ($result->num_rows == 1) {

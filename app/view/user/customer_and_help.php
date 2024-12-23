@@ -45,6 +45,28 @@
 </head>
 
 <body>
+    <?php
+    // Start the session
+    session_start();
+
+    // Check if there is a session message
+    if (isset($_SESSION['message'])) {
+        // Get the message and type
+        $message = $_SESSION['message'];
+        $message_type = $_SESSION['message_type'];
+
+        // Set the message color based on the type
+        $color = ($message_type == 'success') ? 'green' : 'red';
+
+        // Display the message
+        echo "<p style='color: $color; font-weight: bold; text-align: center;'>$message</p>";
+
+        // Clear the session message after displaying it
+        unset($_SESSION['message']);
+        unset($_SESSION['message_type']);
+    }
+    ?>
+
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
@@ -56,18 +78,8 @@
     <!-- Contact Form Section -->
     <section class="form-section">
         <div class="container">
-            <!-- Feedback Message -->
-            <?php
-           if (isset($_GET['message'])) {
-            $type = $_GET['type'] ?? 'info';
-            $color = $type === 'success' ? 'green' : 'red';
-            echo "<p style='color: $color;'>" . htmlspecialchars($_GET['message']) . "</p>";
-        }
-        
-            ?>
-
-<form action="http://localhost/Retail_Ecommerce_Website-1/app/controller/ContactController.php" method="POST">
-    <div class="mb-3">
+            <form action="http://localhost/Retail_Ecommerce_Website-1/app/controller/ContactController.php" method="POST">
+                <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" class="form-control" id="name" name="name" required>
                 </div>

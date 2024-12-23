@@ -72,4 +72,5 @@ public function checkUserByEmail($email)
     return false; // User does not exist
 }
 
+
 }

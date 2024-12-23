@@ -1,45 +1,50 @@
-
 <?php
 // ContactModel.php
-require_once(__ROOT__ . "model/model.php");
-require_once(__ROOT__ . "model/contact.php");
+require_once(__ROOT__ . "/app/model/model.php");
+require_once(__ROOT__ . "/app/model/contact/contact.php");
 
 class ContactModel extends Model
 {
     private $contacts;
 
+    // Constructor to initialize contacts array
     function __construct()
     {
-        $this->fillArray();
+        $this->contacts = array();
+        $this->fillArray(); // Fill the contacts array with data
     }
 
+    // Function to fill the contacts array
     function fillArray()
     {
-        $this->contacts = array();
-        $this->db = $this->connect();
-        $result = $this->readContacts();
-        while ($row = $result->fetch_assoc()) {
-            array_push(
-                $this->contacts,
-                new Contact(
-                    $row["contact_id"],
-                    $row["name"],
-                    $row["email"],
-                    $row["subject"],
-                    $row["message"]
-                )
-            );
+        $this->db = $this->connect(); // Database connection
+        $result = $this->readContacts(); // Fetch contacts
+        if ($result) {
+            while ($row = $result->fetch_assoc()) {
+                array_push(
+                    $this->contacts,
+                    new Contact(
+                        $row["contact_id"],
+                        $row["name"],
+                        $row["email"],
+                        $row["subject"],
+                        $row["message"]
+                    )
+                );
+            }
         }
     }
 
+    // Function to return the contacts array
     function getContacts()
     {
         return $this->contacts;
     }
 
+    // Function to read all contacts from the database
     function readContacts()
     {
-        $sql = "SELECT * FROM contact";
+        $sql = "SELECT * FROM contact_messages"; // Correct table name (contact_messages)
         $result = $this->db->query($sql);
         if ($result->num_rows > 0) {
             return $result;
@@ -48,14 +53,15 @@ class ContactModel extends Model
         }
     }
 
+    // Function to add a new contact to the database
     function addContact($name, $email, $subject, $message)
     {
-        $sql = "INSERT INTO contact (name, email, subject, message) VALUES ('$name', '$email', '$subject', '$message')";
+        // Prepare the SQL query
+        $sql = "INSERT INTO contact_messages (name, email, subject, message) VALUES ('$name', '$email', '$subject', '$message')";
         if ($this->db->query($sql) === true) {
-            echo "<div style='color: green;'>Contact added successfully.</div>";
-            $this->fillArray();
+            return true;
         } else {
-            echo "<div style='color: red;'>ERROR: Could not execute $sql. " . $this->db->error . "</div>";
+            throw new Exception("Error inserting contact message: " . $this->db->error);
         }
     }
 }

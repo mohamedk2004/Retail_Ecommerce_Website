@@ -1,6 +1,9 @@
 <?php
 session_start();
-require_once("../app/db/dbh.php");
+// Use the absolute path
+require_once(__ROOT__ . "/app/db/dbh.php");
+
+//require_once("../app/db/dbh.php");
 abstract class Model{
     protected $db;
     protected $conn;
