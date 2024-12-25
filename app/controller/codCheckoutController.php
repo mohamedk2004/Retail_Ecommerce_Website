@@ -11,10 +11,10 @@ class CodCheckoutController {
     public function displayForm() {
         try {
             $this->model->validateCart();
-            include 'views/user/cod_checkout_view.php';
+            include 'view/pages/user/cod_checkout_view.php';
         } catch (Exception $e) {
             $error = $e->getMessage();
-            include 'views/user/cod_checkout_view.php';
+            include 'view/pages/user/cod_checkout_view.php';
         }
     }
 

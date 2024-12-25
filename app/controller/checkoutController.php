@@ -19,7 +19,7 @@ class CheckoutController extends Controller {
         session_start();
         $cart = $_SESSION['cart'] ?? [];
         $cartTotal = $this->calculateCartTotal($cart);
-        include 'views/checkout_view.php';
+        include 'view/pages/user/checkout_view.php';
     }
 
     /**
