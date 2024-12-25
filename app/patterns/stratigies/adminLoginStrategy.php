@@ -11,7 +11,6 @@ class AdminLoginStrategy implements LoginStrategy {
         $this->db = $db;
     }
 
-    
     public function handleLogin(string $email, string $password): void {
         // Check if the email starts with 'admin'
         if (!str_starts_with($email, 'admin')) {

@@ -12,3 +12,5 @@ $router->post('/cart/change_quantity', 'CartController@handleChangeQuantity'); /
 // Cash on Delivery Checkout Routes
 $router->get('/cod_checkout', 'CodCheckoutController@displayForm'); // Display the checkout form for Cash on Delivery
 $router->post('/cod_checkout', 'CodCheckoutController@processForm'); // Process the Cash on Delivery form submission
+
+// ajadasdasd
