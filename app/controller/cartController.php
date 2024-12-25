@@ -85,7 +85,7 @@ class CartController extends Controller
         echo json_encode(['status' => 'success', 'message' => 'Item removed from cart']);
     }
 
-    /**
+    /****
      * Handle changing the quantity of an item in the cart.
      */
     private function handleChangeQuantity() {
