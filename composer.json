@@ -1,0 +1,11 @@
+{
+    "name": "mohamedkenya/retail_ecommerce_website",
+    "autoload": {
+        "psr-4": {
+            "Mohamedkenya\\RetailEcommerceWebsite\\": "src/"
+        }
+    },
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
+}
