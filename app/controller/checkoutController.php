@@ -1,5 +1,5 @@
 <?php
-require_once 'models/paymentsModel.php';
+require_once 'model/paymentsModel.php';
 
 class CheckoutController extends Controller {
     private $paymentsModel;

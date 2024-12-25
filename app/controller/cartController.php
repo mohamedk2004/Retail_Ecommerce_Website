@@ -1,6 +1,6 @@
 <?php
 require_once 'controller.php'; // Path to the base Controller class
-require_once 'models/cartModel.php'; // Path to the CartModel class
+require_once 'model/cartModel.php'; // Path to the CartModel class
 
 class CartController extends Controller
 {

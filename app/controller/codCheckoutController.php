@@ -1,5 +1,5 @@
 <?php
-require_once 'models/payments/codCheckoutModel.php';
+require_once 'model/payments/codCheckoutModel.php';
 
 class CodCheckoutController {
     private $model;
