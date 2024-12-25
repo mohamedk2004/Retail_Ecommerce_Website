@@ -30,7 +30,7 @@
             <a href="shopping_cart.php" class="btn btn-secondary">Continue Shopping</a>
         </div>
     <?php else: ?>
-        <form method="POST">
+        <form method="POST" action="/cod_checkout">
             <div class="mb-4">
                 <label for="name" class="form-label">Full Name</label>
                 <input type="text" id="name" name="name" class="form-control" required>
