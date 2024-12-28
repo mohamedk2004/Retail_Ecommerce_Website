@@ -10,7 +10,9 @@ $router->post('/cart/update', 'CartController@updateCartContent'); // Update car
 $router->post('/cart/change_quantity', 'CartController@handleChangeQuantity'); // Change item quantity in the cart
 
 // Cash on Delivery Checkout Routes
-$router->get('/cod_checkout', 'CodCheckoutController@displayForm'); // Display the checkout form for Cash on Delivery
-$router->post('/cod_checkout', 'CodCheckoutController@processForm'); // Process the Cash on Delivery form submission
-
+$router->get('/cod_checkout', 'CodCheckoutController@displayForm'); // Display the form
+$router->post('/cod_checkout', 'CodCheckoutController@processForm'); // Process form submission
 // ajadasdasd
+
+$router->post('/codCheckout', [CodCheckoutController::class, 'processCheckout']);
+$router->get('/codCheckout', [CodCheckoutController::class, 'processCheckout']);
