@@ -1,35 +1,29 @@
 <?php
+// Controller: Handles user input and application logic for cod_checkout
+
 session_start();
-require_once('../model/CodCheckoutModel.php');
+require_once 'CodCheckoutModel.php';
+require_once 'CodCheckoutView.php';
 
-class CodCheckoutController {
-    public function handleRequest() {
-        try {
-            if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
-                throw new Exception("Your cart is empty.");
-            }
+$model = new CodCheckoutModel();
 
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                $name = htmlspecialchars($_POST['name']);
-                $city = htmlspecialchars($_POST['city']);
-                $address = htmlspecialchars($_POST['address']);
-                $floor = htmlspecialchars($_POST['floor']);
-                $phone = htmlspecialchars($_POST['phone']);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    try {
+        // Validate input
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $address = $_POST['address'];
+        $model->validateInput($name, $email, $address);
 
-                if (empty($name) || empty($city) || empty($address) || empty($floor) || empty($phone)) {
-                    throw new Exception("All fields are required.");
-                }
-
-                $model = new CodCheckoutModel($_SESSION['cart']);
-                $model->validateCart();
-                $model->sendOrderEmail($name, $city, $address, $floor, $phone);
-                include('../view/checkout_success.php');
-            } else {
-                include('../view/checkout_form.php');
-            }
-        } catch (Exception $e) {
-            $error = $e->getMessage();
-            include('../views/checkout_form.php');
-        }
+        // Process checkout (simplified for demonstration)
+        // In a real-world scenario, this could involve saving to a database or sending an email
+        renderCodCheckoutSuccess();
+    } catch (Exception $e) {
+        // Handle validation errors
+        renderCodCheckoutError($e->getMessage());
     }
+} else {
+    // Show the cod_checkout form
+    renderCodCheckoutForm();
 }
+?>
